@@ -1,0 +1,159 @@
+
+        body {
+            
+            margin: 0;
+            padding: 0;
+            background-color: rgba(0, 0, 0,0.99);
+        }
+        
+
+        .contenedorgeneral{
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        /* ------------------------------------ */
+        .inicio{
+            height: 12%;
+            background: black;
+            
+        }
+        
+        .conteinerBt{
+            width: 50%;
+            margin: auto;
+            justify-content: center; /* Centra horizontalmente los elementos */
+            align-items: center; /* Centra verticalmente los elementos */
+            text-align: center;
+            padding: 1%;
+            display: flex; /* Usa flexbox para centrar verticalmente */
+            position: relative; /* Posicionamiento relativo */
+            text-align: center;
+            position: static;
+        }
+        .boton {
+          
+            height: 42px;
+            width: 100px;
+            padding: 10px 20px;
+            background: #0d47a1 ;
+            font-size: 110%;
+            color: rgb(184, 187, 191);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-left: 10px;
+            margin-top: 2%;
+            transition: background-color 0.3s ease;
+
+
+        }
+        .boton:hover{
+            background-color: #1565c0 ;
+
+        }
+        .icon{
+            filter: invert(80%);
+        }
+        
+        .inputText {
+            padding: 10px; /* Añadir espacio interno */
+            border-radius: 5px; /* Añadir esquinas redondeadas */
+            font-size: 15px; /* Tamaño de fuente */
+            width: 70px; /* Ancho del input */
+            outline: none; /* Quitar el contorno al enfocar */
+            border: none;
+            margin-top: 2%;
+            height: 20px;
+            background-color: #c3cbd4;
+            color: rgb(32, 29, 29);
+            font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            
+        }
+
+        
+        /* ---------------------------------------------------------------- */
+        .caja{
+            height: 82%;
+            width: 100%;
+            display: flex;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+        }
+        .contenedoItem{
+            display: flex;
+            margin: 20px;
+            width: 59%;
+            height: 92%;
+        }
+        .Codigo{
+            position: absolute;
+            margin: 20px;
+            margin-right: 10px;
+            background-color: rgba(83, 3, 255, 0.5);
+            padding: 18px;
+            font-size: 20px;
+            border-radius: 10px;
+            border-color: #6601ea;
+            transition: transform 0.5s ease;
+            cursor: pointer;
+        }
+        .Codigo:hover {
+            transform: scale(1.1); 
+        }
+        #iframeResultado{
+            width: 100%;
+            height: 100%;
+           
+        }
+        iframe{
+            border:  1px solid rgba(102, 1, 234, 0.5);
+        }
+        /* ------------------------------------------------------------------- */
+        .final{
+            display: flex;
+            align-items: center; 
+            justify-content: center;
+            position: relative;
+            text-align: center;
+            background: black;
+            height: 6%;
+            color: white;
+        }
+        .divdendonacion {
+            margin-top: 1px;
+            width: 100%;
+            font-size: 17px;
+            color: rgb(184, 187, 191);
+            position: absolute; /* Posicionamiento absoluto */
+            
+           
+        }
+        @media screen and (max-width: 500px) {
+            .contenedoItem{
+                display: flex;
+                margin: 20px;
+                width: 90%;
+                height: 50%;
+            }
+            .conteinerBt{
+                padding: 8%;
+                
+            }
+            .caja{
+                height: 78%;
+            }
+            .final{
+                display: flex;
+                align-items: center; 
+                justify-content: center;
+                position: relative;
+                text-align: center;
+                background: rgb(0, 0, 0);
+                height: 10%;
+                color: white;
+            }
+        }
+
+   

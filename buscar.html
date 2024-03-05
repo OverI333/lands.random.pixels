@@ -1,167 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Segunda Página</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: black;
-        }
-        .caja{
-            flex: 1;
-            color: white;
-            display: flex;
-            position: relative;
-            justify-content: center;
-        }
-        .Codigo{
-            position: absolute;
-            left: 12%;
-            top: 4%;
-            background-color: rgba(83, 3, 255, 0.5);
-            padding: 18px;
-            font-size: 20px;
-            border-radius: 10px;
-            border-color: #6601ea;
-            transition: transform 0.5s ease;
-            cursor: pointer;
-        }
-        .Codigo:hover {
-            transform: scale(1.1); 
-        }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            min-height: 100%; 
-            
-        }
-        .input-container {
-            margin-top: 25px;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            border: none;
-            
-        }
-        #urlInput {
-            width: 40%;
-            height: 43px;
-            margin-right: 10px;
-            padding: 5px;
-            font-size: 16px;
-            border-radius: 10px;
-            font-size: 20px;
-            text-align: center;
-            outline: none;
-            
-        }
-        #buscarBtn, #regresarBtn {
-            border-radius: 10px;
-            padding: 10px 20px;
-            height: 55px;
-            margin: 5px;
-            font-size: 16px;
-            padding: 10px 20px;
-            background-color: #6601ea;
-            font-size: 110%;
-            font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        iframe {
-            width: 80%;
-            height: 80vh;
-            border: none;
-            border:  1px solid rgba(102, 1, 234, 0.5);
-        }
-        @media screen and (max-width: 700px) {
-            .contenedorgeneral{
-                width: 100%;
-            }
-            .container{
-                width: 100%;
-            }
+    <title>Random Lands full</title>
+    <link rel="icon" href="img/icononav.ico" type="image/x-icon">
 
-            .input-container{
-                margin-left: 4%;
-        
-                width: 100%;
-            }
-            .caja{
-                margin-top: 5vh;
-                width: 100%;
-                
-            }
-            iframe{
-                height: 55vh;
-                width: 90%;
-            }
-            .Codigo{
-                left: 14%;
-            }
-        }
-
-    </style>
+    
+<link rel="stylesheet" href="style/styleBuscar.css">
 </head>
 <body>
     <div class="contenedorgeneral">
-        <div class="container">
-            <div class="input-container">
-                <input type="text" id="urlInput" placeholder=" Ingrese ID">
-                <button id="buscarBtn" onclick="buscarURL()">Buscar</button>
-                <button id="regresarBtn" onclick="irAPaginaPrincipal()">Regresar</button>
+        <div class="inicio">
+            <div class="conteinerBt">
+                <input class="inputText" type="text" id="urlInput" placeholder=" Ingrese ID" autocomplete="off">
+                <button class="boton" onclick="buscarURL()"><img src="img/buscar.svg" class="icon"></button>
+                <button class="boton" onclick="irAPaginaPrincipal()"><img src="img/volver.svg" class="icon"></button>
+            </div>
+        </div>
+        <div class="caja">
+            <div class="contenedoItem">
+                <div class="Codigo" id="code" onclick="copiarContenido('code')"></div>
+                <iframe id="iframeResultado"></iframe>
             </div>
         </div>
 
-        <div class="caja"> 
-            <div class="Codigo" id="code" onclick="copiarContenido('code')"></div>
-            <iframe id="iframeResultado"></iframe>
+        <div class="final">
+            <div class="divdendonacion"><span>Echo por JohnElvis con cariño 🥰. Donaciones por la wallet ronin:</span> <span id="donacion">0xf483cfe05783866ba6fca458c1f4f6022f322195</span> </div >
         </div>
+
     </div>
 
-
-    <script>
-        function buscarURL() {
-            url = "https://play.pixels.xyz/pixels/share/"
-            var codigo = document.getElementById("urlInput").value;
-            if (!isNaN(codigo)){
-                document.getElementById("iframeResultado").src = url+codigo;
-                document.getElementById("urlInput").value = " ";
-                document.getElementById("code").textContent = codigo;
-            } else{
-                alert("Debes ingresa un ID");
-                document.getElementById("urlInput").value = " ";
-            }
-            
-        }
-
-        function irAPaginaPrincipal() {
-            window.location.href = "index.html";
-        }
-    </script>
-    <script>
-        function copiarContenido(overlayId) {
-            var overlay = document.getElementById(overlayId);
-            var texto = overlay.innerText;
-    
-            var textareaTemp = document.createElement('textarea');
-            textareaTemp.value = texto;
-    
-            document.body.appendChild(textareaTemp);
-            textareaTemp.select();
-            document.execCommand('copy');
-            document.body.removeChild(textareaTemp);
-           
-        }
-    </script>
+<script src="script/buscar.js"></script>
 </body>
 </html>

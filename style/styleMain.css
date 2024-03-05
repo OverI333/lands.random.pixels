@@ -1,0 +1,353 @@
+
+    body{
+        background-color: rgba(0, 0, 0,0.99);
+        padding: 0px;
+        margin: 0px;
+        
+    }
+    
+  
+    .contenedorOpciones {
+        background-color: rgb(0, 0, 0);
+        display: flex;
+        height: 90vh; /* Usamos unidades relativas */
+        width: 15%;
+        flex-direction: column;
+        transition: width 1s;
+    }
+    /* .contenedorOpciones:hover{
+        width: 13%;
+    } */
+
+    .opcionnes {
+       
+        height: 5vh;
+        width: 100%;
+        
+    }
+    .options {
+        display: none;
+        margin-top: 10px;
+        /*position: relative;
+        z-index: 1;*/
+        border: none;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .options button {
+        margin-left: 15%;
+        margin-top: 5px;
+        width: 50%;
+        text-align: left;
+        border: none;
+        color: rgba(206, 213, 221,0.8);
+        font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    #showOptionsBtn {
+        height: 6vh; /* Ajusta la altura según sea necesario */
+        background: rgba(13, 71, 161,0.9);
+        border:1px solid rgba(255,255,255,1);
+        color: rgb(184, 187, 191);
+        border: none; /* Sin borde */
+        border-radius: 5px; /* Bordes redondeados */
+        padding: 5px 20px; /* Espacio alrededor del texto */
+        font-size: 14px; /* Tamaño del texto */
+        cursor: pointer; /* Cursor de apuntador al pasar el ratón */
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        transition: background-color 0.3s ease;
+    }
+    #showOptionsBtn:hover{
+        background-color: #1565c0 ;
+    }
+    
+
+    .opcionBoton{
+       
+        display: block;
+        padding: 13px 25px;
+        background: rgba(0, 0, 0, 0.2);
+        margin-bottom: 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 400;
+        min-width:20%;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        justify-content: center;   
+        display: block;
+        transition: background-color 0.3s ease;
+        transition: opacity 1s ease;
+    }
+    .opcionBoton:hover{
+        background-color: #104e96 ;
+    }
+
+    .radios {
+        position: relative;
+        margin-top: 30px;
+        transition: margin-top 0.3s ease; /* Agregamos transición para suavizar el movimiento */
+        
+    }
+
+    .radios {
+        display: block;
+        margin-bottom: 20px;
+        color: rgb(184, 187, 191);
+        font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .radio-item [type="radio"]{
+        display: none;
+    }
+
+    .radio-item + .radio-item{
+        margin-top: 10px;
+    }
+    .radio-item label{
+        
+        display: block;
+        padding: 15px 60px;
+        /* background: rgba(13, 71, 161,0.6); */
+        /* border:1px solid rgba(255,255,255,0.1); */
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14.2px;
+        font-weight: 400;
+        min-width: 20%;
+        white-space: nowrap;
+        position: relative;
+    }
+    .radio-item label:after,
+    .radio-item label:before{
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+    }
+
+    .radio-item label:after{
+        height: 20px;
+        width: 20px;
+        border:2px solid rgba(206, 213, 221,0.8);
+        left: 20px;
+        top: calc(50% - 12px);
+        
+    }
+    .radio-item label:before{
+        background: rgba(206, 213, 221,0.8);
+        height: 20px;
+        width: 20px;
+        left: 22px;
+        top: calc(50% - 10px);
+        transform: scale(2);
+        transition: .4s ease-in-out 0s;
+        opacity: 0;
+        visibility: hidden;
+        
+    }
+    .radio-item [type="radio"]:checked ~ label{
+        border-color: #0d47a1;
+        
+    }
+
+    .radio-item [type="radio"]:checked ~ label:before{
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+        
+    }
+    .radio-item{
+        transition: background-color 0.2s ease;
+       
+    }
+    .radio-item:hover{
+        background-color: #1565c0 ;
+    }
+    /*---------------------------------------------------------------------------------*/
+    .ContenedorGeneral{
+        /* background-color: blueviolet; */
+        height: 100vh;
+        overflow: hidden;
+    }
+   
+    .ContenedorGeneral-inicio{
+        /* background-color: burlywood; */
+        height: 12%;
+        background: black;
+        
+    }
+    .contenedorBotonocultar{
+        /* background-color: aqua; */
+        width: 50%;
+        margin: auto;
+        justify-content: center; /* Centra horizontalmente los elementos */
+        align-items: center; /* Centra verticalmente los elementos */
+        text-align: center;
+        padding: 1%;
+        display: flex; /* Usa flexbox para centrar verticalmente */
+        position: relative; /* Posicionamiento relativo */
+        text-align: center;
+        position: static;
+        
+        
+    }
+    .ContenedorGeneral-de-elementos{
+        display: flex;
+        width: 100%;
+        height: 82%;
+        /* overflow: hidden; */
+        
+    }
+    .ContenedorGeneral-final {
+        
+        height: 6%;
+        margin-bottom: 20px;
+        /* padding-top: 10px; */
+        display: flex; /* Usa flexbox para centrar verticalmente */
+        align-items: center; /* Centra verticalmente los elementos */
+        justify-content: center; /* Centra horizontalmente los elementos */
+        position: relative; /* Posicionamiento relativo */
+        text-align: center;
+        background: black;
+    }
+
+    .divdendonacion {
+        width: 100%;
+        font-size: 17px;
+        color: rgb(184, 187, 191);
+        position: absolute; /* Posicionamiento absoluto */
+        top: 50%; /* Alinea la parte superior del elemento al 50% del contenedor */
+        left: 50%; /* Alinea la izquierda del elemento al 50% del contenedor */
+        transform: translate(-50%, -50%); /* Mueve el elemento hacia atrás un 50% de su propio ancho y alto */
+    }
+
+    .container {
+        width: 275%;
+        display: flex;
+        /* background-color: #72ad77; */
+        justify-content: center;
+        height: 100%;
+        width : 85%;
+        margin-left: auto;
+        margin-right:auto;
+        overflow: hidden;
+        
+    }
+
+    .boxContainer {
+        position:relative;
+        margin-right: 10px;
+        justify-content: center;
+        align-items: center;
+        border:  1px solid rgba(102, 1, 234, 0.5);
+    }
+    .boxInfo{
+       
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 20px;
+        background-color: rgba(83, 3, 255, 0.5);
+        padding: 10px;
+        border-radius: 10px;
+        color: rgb(184, 187, 191);
+        cursor: pointer;
+        transition: transform 1s ease;;
+    }
+    .boxInfo:hover {
+        transform: scale(1.09); 
+    }
+    .box{
+        border:  1px solid rgba(102, 1, 234, 0.5);
+        border: none;
+        width: 100%; /* Ocupar todo el ancho del contenedor*/
+        height: 100%; /* Ocupar todo el alto del contenedor*/
+        display: block; /* Asegurar que el iframe ocupe todo el espacio disponible*/
+
+    }
+    /*-----------------------Botones Incio---------------*/
+    .boton {
+
+        height: 42px;
+        width: 100px;
+        padding: 10px 20px;
+        background: #0d47a1 ;
+        font-size: 110%;
+        color: rgb(184, 187, 191);
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        margin-left: 10px;
+        margin-top: 2%;
+        transition: background-color 0.3s ease;
+
+        
+    }
+    .boton:hover{
+        background-color: #1565c0 ;
+       
+    }
+    /*-------------------final-----------------------*/
+    #icon{
+        
+        transition: transform 0.3s ease;
+    }
+    .icon{
+        filter: invert(80%);
+    }
+    #donacion{
+        cursor: pointer;
+    }
+    @media screen and (max-width: 500px){
+        .ContenedorGeneral-de-elementos{
+            height: 78%;
+            overflow: scroll;
+            
+        }
+        .container{
+            position: relative;
+            overflow: scroll;
+            height: 120vh;
+            width: 100%;
+            align-items: center;
+            
+        }
+        .boxContainer{
+            overflow: visible;
+            height: auto;
+            width: auto;
+            display: flex;  
+        }
+        .box{
+            height: 100%;
+            width: 100%;
+        }
+        /* --------------------- */
+        .contenedorBotonocultar{
+            padding: 8%;
+        }
+        .ContenedorGeneral-final{
+            height: 10%;
+            z-index: 3;
+        }
+
+        .contenedorOpciones {
+            position: absolute;
+            background-color: rgb(0, 0, 0);
+            display: flex;
+            height: 90vh; /* Usamos unidades relativas */
+            width: 50%;
+            flex-direction: column;
+            transition: width 1s;
+            z-index: 2;
+        }
+    }
+

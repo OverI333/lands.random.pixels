@@ -22,12 +22,12 @@
         .conteinerBt{
             width: 50%;
             margin: auto;
-            justify-content: center; /* Centra horizontalmente los elementos */
-            align-items: center; /* Centra verticalmente los elementos */
+            justify-content: center; 
+            align-items: center; 
             text-align: center;
             padding: 1%;
-            display: flex; /* Usa flexbox para centrar verticalmente */
-            position: relative; /* Posicionamiento relativo */
+            display: flex;
+            position: relative; 
             text-align: center;
             position: static;
         }
@@ -57,11 +57,11 @@
         }
         
         .inputText {
-            padding: 10px; /* Añadir espacio interno */
-            border-radius: 5px; /* Añadir esquinas redondeadas */
-            font-size: 15px; /* Tamaño de fuente */
-            width: 70px; /* Ancho del input */
-            outline: none; /* Quitar el contorno al enfocar */
+            padding: 10px;
+            border-radius: 5px; 
+            font-size: 15px; 
+            width: 70px;
+            outline: none;
             border: none;
             margin-top: 2%;
             height: 20px;
@@ -88,6 +88,7 @@
             height: 92%;
         }
         .Codigo{
+            color: rgb(184, 187, 191);
             position: absolute;
             margin: 20px;
             margin-right: 10px;
@@ -126,9 +127,8 @@
             width: 100%;
             font-size: 17px;
             color: rgb(184, 187, 191);
-            position: absolute; /* Posicionamiento absoluto */
+            position: absolute; 
             
-           
         }
         @media screen and (max-width: 500px) {
             .contenedoItem{

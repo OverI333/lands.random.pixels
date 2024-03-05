@@ -6,56 +6,52 @@
     const showOptionsBtn = document.getElementById('showOptionsBtn');
     const options = document.getElementById('options');
     const container = document.getElementById('container');
-    const radios = document.getElementById('radios'); // Obtener el div con las opciones radios
+    const radios = document.getElementById('radios'); 
     var widths = window.innerWidth;
 
     function irAPaginaBuscar() {
         window.location.href = "buscar.html";
     }
     
-    /*Al darle click el evento hace que se muestre el contenido, osea los botones se muestran*/
     showOptionsBtn.addEventListener('click', function(e) {
         
         e.stopPropagation();
         if (options.style.display === 'block') {
             options.style.display = 'none';
-            radios.style.marginTop = '30px'; // Restaurar el margen superior del div radios cuando se ocultan las opciones
+            radios.style.marginTop = '30px'; 
             icono.style.transform = 'rotate(0deg)';
         } else {
             icono.style.transform = 'rotate(-180deg)';
             options.style.display = 'block';
-            radios.style.marginTop = (options.clientHeight + 30) + 'px'; // Ajustar el margen superior del div radios
+            radios.style.marginTop = (options.clientHeight + 30) + 'px'; 
         }
     });
 
     document.addEventListener('click', function() {
         options.style.display = 'none';
-        // Restaurar el margen superior del div radios cuando se ocultan las opciones
         radios.style.marginTop = '30px';
         icono.style.transform = 'rotate(0deg)';
     });
 
-
-    /* (options)contiene los botones de las opciones. Escucha un evento, Cuando se hace clic en su contenedor */
     options.addEventListener('click', function(event) {
         
         event.stopPropagation();
-        if (event.target.tagName === 'BUTTON') { /*Verifica si el elemento en el que se hizo clic es un boton */
-            const num = parseInt(event.target.getAttribute('data-num'));  /*Obtiene el atributo "data-num" de un boton*/
-            createBoxes(num); /*se crea un determinado cajas dependiendo del parametro*/
-            options.style.display = 'none'; /*Luego se oculta los botones*/
-            radios.style.marginTop = '30px'; // Restaurar el margen superior del div radios cuando se ocultan las opciones
+        if (event.target.tagName === 'BUTTON') {
+            const num = parseInt(event.target.getAttribute('data-num'));
+            createBoxes(num);
+            options.style.display = 'none';
+            radios.style.marginTop = '30px';
             updateNumbers();
         }
     });
 
     function createBoxes(num) {
-        container.innerHTML = ''; // Limpiamos el contenido anterior
+        container.innerHTML = ''; 
 
         for (let i = 0; i < num; i++) {
-            const boxContainer = document.createElement('div'); // Crear un contenedor para el iframe y boxInfo
-            const box = document.createElement('iframe'); // Crear el iframe
-            const boxInfo = document.createElement('div'); // Crear el boxInfo
+            const boxContainer = document.createElement('div');
+            const box = document.createElement('iframe'); 
+            const boxInfo = document.createElement('div');
 
             boxContainer.classList.add('boxContainer');
             box.classList.add('box');
@@ -158,7 +154,6 @@
                 4223,4226,4245,4251,4252,4260,4295,4304,4305,4307,4309,4314,4333,4342,4348,4354,4372,4374,4383,4385,4387,4396,4401,4404,4442,4448,4455,4462,4464,4469,4478,4480,4499,4501,4509,4510,4512,4513,4527,4540,4546,4556,4556,4558,4560,4566,4581,4584,4589,
                 4595,4598,4615,4641,4653,4660,4663,4665,4675,4680,4689,4697,4705,4706,4707,4716,4718,4721,4726,4748,4752,4772,4783,4784,4809,4814,4820,4827,4829,4833,4844,4856,4874,4893,4898,4907,4924,4929,4933,4938,4941,4948,4951,4953,4962,4965,4974,4993,4994];
     
-    // Seleccionar todos los elementos input de tipo radio con el nombre "numCajas"
     var valor = 1;
     var My_radios = document.querySelectorAll('input[type="radio"][name="numCajas"]');
     var randomIndex;
@@ -169,9 +164,6 @@
         if (this.checked) {
            valor = this.value;
            updateNumbers();
-          
-        //   console.log('El valor del radio seleccionado es: ' + valor);
-        
         }
       });
     });
@@ -298,7 +290,6 @@
     
     function copiarContenido(boxInfo) {
     var texto = boxInfo.innerText;
-
         navigator.clipboard.writeText(texto)
     }   
     document.getElementById('donacion').addEventListener('click', function() {
@@ -307,19 +298,16 @@
         
         });
     
-    // Por defecto, mostramos una caja al cargar la página
     createBoxes(1);
 
-    // Ocultar contenido al hacer clic en el botón
     ocultarContenidoBtn.addEventListener('click', function() {
-        if (contenedorOpciones.style.display === 'none') { // "Verifica si el contenedorOpciones" SI ES  "none",si es asi su contenido se mostrara.
-            contenedorOpciones.style.display = 'flex'; // Esto hace que el contenido se muestre.
-           
-            radios.style.marginTop = '30px'; // Restaurar el margen superior del div radios cuando se muestra el contenido
+        if (contenedorOpciones.style.display === 'none') { 
+            contenedorOpciones.style.display = 'flex'; 
+            radios.style.marginTop = '30px'; 
             options.style.display = 'none';
             icono.style.transform = 'rotate(0deg)';
             
         } else {
-            contenedorOpciones.style.display = 'none'; // Si de "contenedorOpciones" su contenido está visible, se oculta    
+            contenedorOpciones.style.display = 'none';  
         }
     });

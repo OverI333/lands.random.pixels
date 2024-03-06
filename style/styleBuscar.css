@@ -86,19 +86,21 @@
             margin: 20px;
             width: 59%;
             height: 92%;
+            background-color: #101111;
         }
         .Codigo{
-            color: rgb(184, 187, 191);
             position: absolute;
             margin: 20px;
             margin-right: 10px;
-            background-color: rgba(83, 3, 255, 0.5);
+            /* background-color: rgba(42, 40, 40, 0.5); */
+            color: rgb(204, 209, 214);
             padding: 18px;
             font-size: 20px;
             border-radius: 10px;
-            border-color: #6601ea;
+            border-color: #000000;
             transition: transform 0.5s ease;
             cursor: pointer;
+            background-color: rgba(16, 17, 17, 0.7);
         }
         .Codigo:hover {
             transform: scale(1.1); 
@@ -109,7 +111,7 @@
            
         }
         iframe{
-            border:  1px solid rgba(102, 1, 234, 0.5);
+            border:  1px solid rgba(0, 0, 0, 0.5);
         }
         /* ------------------------------------------------------------------- */
         .final{

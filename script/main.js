@@ -7,7 +7,14 @@
     const options = document.getElementById('options');
     const container = document.getElementById('container');
     const radios = document.getElementById('radios'); 
+    const updateRandomBoton = document.getElementById('updateRandom'); 
+
     var widths = window.innerWidth;
+    let confirmacion = [];
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        updateNumbers(); 
+    });
 
     function irAPaginaBuscar() {
         window.location.href = "buscar.html";
@@ -52,25 +59,68 @@
             const boxContainer = document.createElement('div');
             const box = document.createElement('iframe'); 
             const boxInfo = document.createElement('div');
+            // const boxLock = document.createElement('img');
+
+            boxContainer.id = i;
+
+            if (num>1){
+            
+                const boxLock = document.createElement('img');
+                boxLock.classList.add('boxLock');
+                boxContainer.appendChild(boxLock);
+                
+                const iconoOriginal = "img/lockOpen.svg"; 
+                const iconoAlterno = "img/lock.svg"; 
+                boxLock.src = iconoOriginal;
+
+                boxLock.addEventListener('click', function(event) {
+                
+                    event.stopPropagation(); // Evita la propagación del clic al boxContainer
+                    // Alterna el estado de la bandera
+                    
+                    if (bolian) {  
+                        bolian = false;
+                        const boxContainerId = this.parentNode.id; // Obtener ID del boxContainer
+                        // confirmacion = boxContainerId;
+                        confirmacion.push(boxContainerId)
+                        // console.log('Función bloqueada para el boxContainer con ID: ' + boxContainerId);
+                        boxLock.src = iconoAlterno;
+                    } else {
+                        bolian = true;
+                        // console.log('Función desbloqueada para este boxContainer');
+                        const boxContainerId = this.parentNode.id;
+                        confirmacion = confirmacion.filter(elemento => elemento !== boxContainerId);
+                        boxLock.src = iconoOriginal;
+                    }
+                    
+                });
+            }
 
             boxContainer.classList.add('boxContainer');
             box.classList.add('box');
             boxInfo.classList.add('boxInfo');
+            // boxLock.classList.add('boxLock')
 
             boxContainer.appendChild(box);
             boxContainer.appendChild(boxInfo);
+            // boxContainer.appendChild(boxLock);
             container.appendChild(boxContainer);
+
+    
+            
 
 
             if (num == 1){
                 boxContainer.style.marginTop = '3.5%'
                 boxContainer.style.width = '60%'
                 boxContainer.style.height = '70vh'
+                 confirmacion = [];
             }
             if (num == 2){
                 boxContainer.style.marginTop = '3.5%'
                 boxContainer.style.width = '40%'
                 boxContainer.style.height = '68vh'
+                 confirmacion = [];
             }
             if (num == 3){
                 container.style.flexDirection = '';
@@ -78,7 +128,8 @@
                 boxContainer.style.marginTop = '3.5%';
                 boxContainer.style.width = '40%';
                 boxContainer.style.marginLeft = '15px';
-                boxContainer.style.height = '65vh';   
+                boxContainer.style.height = '65vh';  
+                 confirmacion = []; 
 
             }
             if (num == 4){
@@ -87,6 +138,7 @@
                 boxContainer.style.marginTop = '0.5%';
                 boxContainer.style.width = '35%';
                 boxContainer.style.height = '40vh';
+                 confirmacion = [];
  
             }
             console.log(widths)
@@ -114,13 +166,32 @@
                 
             }
 
+            let bolian = true;
+            
             // Agregar la carga de las lands
             //----------------------------
             boxInfo.addEventListener('click', function() {
                 copiarContenido(boxInfo);
             });
+
+            updateRandomBoton.addEventListener('click', function() {
+                
+                  updateNumbers();
+                
+            });
+            // boxLock.dataset.containerId = Math.random().toString(36).substring(2);
+
+            
         }
     };
+    function copiarContenido(boxInfo) {
+        var texto = boxInfo.innerText;
+            navigator.clipboard.writeText(texto)
+        }
+          
+
+    
+
 
     var numColmenas = [264,284,541,997,1028,1340,1664,1781,2127,2676,2921,3041,3056,3297,3985,4076,4081,4200,4409,4547,4842];
     var numTextil = [107,262,351,411,438,571,783,1021,1077,1099,1423,1670,1772,1947,1960,2350,2381,2631,2840,2953,3049,3063,3136,3813,3888,4018,4841];
@@ -186,8 +257,10 @@
                 if (!indices.includes(randomIndex)) {
                     indices.push(randomIndex);
                     var randomNumber = allowedNumbers[randomIndex];
-                    iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
-                    overlays[i].textContent = randomNumber;
+                    if (!confirmacion.includes(i.toString())) {
+                        iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
+                        overlays[i].textContent = randomNumber;
+                    }
                     i++;
                 }
                 
@@ -199,8 +272,10 @@
                 if (!indices.includes(randomIndex)) {
                     indices.push(randomIndex);
                     var randomNumber = allowedNumbers[randomIndex];
-                    iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
-                    overlays[i].textContent = randomNumber;
+                    if (!confirmacion.includes(i.toString())) {
+                        iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
+                        overlays[i].textContent = randomNumber;
+                    }
                     i++;
                 }
                 
@@ -212,8 +287,10 @@
                 if (!indices.includes(randomIndex)) {
                     indices.push(randomIndex);
                     var randomNumber = allowedNumbers[randomIndex];
-                    iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
-                    overlays[i].textContent = randomNumber;
+                    if (!confirmacion.includes(i.toString())) {
+                        iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
+                        overlays[i].textContent = randomNumber;
+                    }
                     i++;
                 }
                 
@@ -225,8 +302,10 @@
                 if (!indices.includes(randomIndex)) {
                     indices.push(randomIndex);
                     var randomNumber = numColmenas[randomIndex];
-                    iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
-                    overlays[i].textContent = randomNumber;
+                    if (!confirmacion.includes(i.toString())) {
+                        iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
+                        overlays[i].textContent = randomNumber;
+                    }
                     i++;
                 }
                 
@@ -238,8 +317,10 @@
                 if (!indices.includes(randomIndex)) {
                     indices.push(randomIndex);
                     var randomNumber = numHornos[randomIndex];
-                    iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
-                    overlays[i].textContent = randomNumber;
+                    if (!confirmacion.includes(i.toString())) {
+                        iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
+                        overlays[i].textContent = randomNumber;
+                    }
                     i++;
                 }
                 
@@ -251,9 +332,10 @@
 
                 if (!indices.includes(randomIndex)) {
                     indices.push(randomIndex);
-                    var randomNumber = numCarpenter[randomIndex];
-                    iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
-                    overlays[i].textContent = randomNumber;
+                    if (!confirmacion.includes(i.toString())) {
+                        iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
+                        overlays[i].textContent = randomNumber;
+                    }
                     i++;
                 }
                 
@@ -265,8 +347,10 @@
                 if (!indices.includes(randomIndex)) {
                     indices.push(randomIndex);
                     var randomNumber = numMinas[randomIndex];
-                    iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
-                    overlays[i].textContent = randomNumber;
+                    if (!confirmacion.includes(i.toString())) {
+                        iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
+                        overlays[i].textContent = randomNumber;
+                    }
                     i++;
                 }
                
@@ -278,8 +362,10 @@
                 if (!indices.includes(randomIndex)) {
                     indices.push(randomIndex);
                     var randomNumber = numTextil[randomIndex];
-                    iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
-                    overlays[i].textContent = randomNumber;
+                    if (!confirmacion.includes(i.toString())) {
+                        iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
+                        overlays[i].textContent = randomNumber;
+                    }
                     i++;
                 }
                  
@@ -288,10 +374,7 @@
         }
     };
     
-    function copiarContenido(boxInfo) {
-    var texto = boxInfo.innerText;
-        navigator.clipboard.writeText(texto)
-    }   
+     
     document.getElementById('donacion').addEventListener('click', function() {
         var contenido = this.textContent;
         navigator.clipboard.writeText(contenido)

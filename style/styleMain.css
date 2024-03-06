@@ -280,6 +280,7 @@
         color: white; 
         top: 10px;
         right: 10px;
+        cursor: pointer; 
         
     }
     img{    

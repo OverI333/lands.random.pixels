@@ -63,7 +63,7 @@
 
             boxContainer.id = i;
 
-            if (num>1){
+            if (num>0){
             
                 const boxLock = document.createElement('img');
                 boxLock.classList.add('boxLock');

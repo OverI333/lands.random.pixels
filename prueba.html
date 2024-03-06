@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BoxContainers</title>
+<style>
+    .boxContainer {
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+    .boxInfo {
+        background-color: #f0f0f0;
+        padding: 10px;
+        margin-top: 5px;
+    }
+    .boxLock {
+        display: block;
+        margin-top: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div id="container"></div>
+<button id="updateRandom">Cambiar Contenido</button>
+
+<script>
+    let confirmacion = [];
+    let bolian = true;
+    
+    const container = document.getElementById('container');
+    const updateRandomBoton = document.getElementById('updateRandom'); 
+
+    function createBoxes(num) {
+        container.innerHTML = ''; 
+
+        for (let i = 0; i < num; i++) {
+            const boxContainer = document.createElement('div');
+            const box = document.createElement('iframe'); 
+            const boxInfo = document.createElement('div');
+            
+            if (num==4){
+                const boxLock = document.createElement('img');
+                boxLock.classList.add('boxLock');
+                boxContainer.appendChild(boxLock);
+                
+                const iconoOriginal = "img/lockOpen.svg"; 
+                const iconoAlterno = "img/lock.svg"; 
+                boxLock.src = iconoOriginal;
+            }
+            
+
+            boxContainer.id = i;
+
+            boxContainer.classList.add('boxContainer');
+            box.classList.add('box');
+            boxInfo.classList.add('boxInfo');
+            
+
+            boxContainer.appendChild(box);
+            boxContainer.appendChild(boxInfo);
+            
+            container.appendChild(boxContainer);
+            
+            
+
+            // Evento clic para cambiar contenido del boxContainer
+            updateRandomBoton.addEventListener('click', function() {
+                
+                    
+                bolian = true;
+                updateNumbers();
+                
+            });
+
+            // Evento clic para bloquear/desbloquear función en el img
+            boxLock.addEventListener('click', function(event) {
+                
+                event.stopPropagation(); // Evita la propagación del clic al boxContainer
+                // Alterna el estado de la bandera
+                
+                if (bolian) {  
+                    bolian = false;
+                    const boxContainerId = this.parentNode.id; // Obtener ID del boxContainer
+                    // confirmacion = boxContainerId;
+                    confirmacion.push(boxContainerId)
+                    console.log('Función bloqueada para el boxContainer con ID: ' + boxContainerId);
+                    boxLock.src = iconoAlterno;
+                } else {
+                    bolian = true;
+                    console.log('Función desbloqueada para este boxContainer');
+                    const boxContainerId = this.parentNode.id;
+                    confirmacion = confirmacion.filter(elemento => elemento !== boxContainerId);
+                    boxLock.src = iconoOriginal;
+                }
+                
+            });
+            
+            
+        }
+    };
+    
+
+    var allowedNumbers = [10, 15, 17, 19, 23];
+
+    // Función para obtener un número aleatorio y actualizar el contenido de los iframes
+    function updateNumbers() {
+        var indices = [];
+        console.log(indices)
+        var i =0;
+        var iframes = document.querySelectorAll('iframe');
+        var overlays = document.querySelectorAll('.boxInfo');
+        
+        while (indices.length < iframes.length){
+
+
+            var randomIndex = Math.floor(Math.random() * allowedNumbers.length);
+            if (!indices.includes(randomIndex)) {
+                    indices.push(randomIndex);
+                    var randomNumber = allowedNumbers[randomIndex];
+                    
+                    if (!confirmacion.includes(i.toString())) {
+                        
+                        iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
+                        overlays[i].textContent = randomNumber;
+                    }
+                    i++;
+            }
+            console.log(indices)
+
+        }
+        
+    }
+
+    function landsiter(iframes,randomNumber,i){
+        iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
+        try{
+                            landsiter(iframes,randomNumber,i);
+                        } catch(e){
+                            console.log("El servidor esta de lands esta sobre cargada")
+                        }
+    }
+
+
+    // Crear tres boxContainer
+    createBoxes(3);
+</script>
+</body>
+</html>

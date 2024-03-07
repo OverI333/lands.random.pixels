@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Random Lands full</title>
-<link rel="icon" href="img/icononav.ico" type="image/x-icon">
-<link rel="stylesheet" href="style/styleMain.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Lands full</title>
+    <link rel="icon" href="img/icononav.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style/styleMain.css">
+    <link rel="stylesheet" href="style/styleRecdTree.css">
 </head>
+
 <body>
-<div class="ContenedorGeneral">
+    <div class="ContenedorGeneral">
 
-    <div class="ContenedorGeneral-inicio">
-        <div class="contenedorBotonocultar">
-            <button class="boton" id="ocultarContenidoBtn"> <img src="img/config.svg" class="icon"></button>
-            <button class="boton" id="updateRandom"><img src="img/actualizar.svg" class="icon"></button>
-            <button class="boton" onclick="irAPaginaBuscar()"><img src="img/buscar.svg" class="icon"></button>
+        <div class="ContenedorGeneral-inicio">
+            <div class="contenedorBotonocultar">
+                <button class="boton" id="ocultarContenidoBtn"> <img src="img/config.svg" class="icon"></button>
+                <button class="boton" id="ocultarcontenedorArboles"><img src="img/arbol.svg" class="icon"></button>
+                <button class="boton" id="updateRandom"><img src="img/actualizar.svg" class="icon"></button>
+                <button class="boton" onclick="irAPaginaBuscar()"><img src="img/buscar.svg" class="icon"></button>
+            </div>
         </div>
-    </div>
 
+        <div class="ContenedorGeneral-de-elementos">
 
-    <div class="ContenedorGeneral-de-elementos">
-        
             <div class="contenedorOpciones">
                 <div class="opcionnes">
-                    <button id="showOptionsBtn"> <span class="lands">Lands</span> <img src="img/down.svg" id="icon"></button>
+                    <button id="showOptionsBtn"> <span class="lands">Lands</span> <img src="img/down.svg"
+                            id="icon"></button>
                     <div class="options" id="options">
                         <button data-num="1" class="opcionBoton">Land 1</button>
                         <button data-num="2" class="opcionBoton">Land 2</button>
@@ -33,7 +37,7 @@
                 </div>
 
                 <div class="radios" id="radios">
-                    
+
                     <div class="radio-item">
                         <input type="radio" name="numCajas" id="radio1" value="1"><label for="radio1">Arboles</label>
                     </div>
@@ -46,7 +50,7 @@
                         <input type="radio" name="numCajas" id="radio3" value="3"><label for="radio3">Gallineros</label>
                     </div>
 
-                    <div  class="radio-item">
+                    <div class="radio-item">
                         <input type="radio" name="numCajas" id="radio4" value="4"><label for="radio4">Colmenas</label>
                     </div>
 
@@ -54,32 +58,57 @@
                         <input type="radio" name="numCajas" id="radio5" value="5"><label for="radio5">Hornos</label>
                     </div>
 
-                    <div class="radio-item"> 
-                        <input type="radio" name="numCajas" id="radio6" value="6"><label for="radio6">Carpinterias</label>
+                    <div class="radio-item">
+                        <input type="radio" name="numCajas" id="radio6" value="6"><label
+                            for="radio6">Carpinterias</label>
                     </div>
 
                     <div class="radio-item">
                         <input type="radio" name="numCajas" id="radio7" value="7"><label for="radio7">Minas</label>
                     </div>
-                    
+
                     <div class="radio-item">
                         <input type="radio" name="numCajas" id="radio8" value="8"><label for="radio8">Textil</label>
                     </div>
                 </div>
             </div>
-        
-        
-        <div class="container" id="container">
+            <!-- ------------------------------------------------------------- -->
+            <div id="contenedorArboles" class="contenedorOpciones" style="display: none;">
+                <button id="showTree"> <span class="lands">Nuevo</span> <img src="img/down.svg"
+                    id="iconA"></button>
+                <div id="contenedorInfo" style="display: none;">
+
+                    <div class="contenSelct">
+                        <input class="radio" id="selecradio1" type="radio" name="radio" value="1" onclick="desactivarInputTemp()"> <label class="label1" for="selecradio1">Fase 1</label> <img src="img/fase1.png" alt="">
+                    </div>
+                    <div class="contenSelct">
+                        <input class="radio" id="selecradio2" type="radio" name="radio" value="2" onclick="desactivarInputTemp()"> <label class="label2" for="selecradio2">Fase 2</label> <img src="img/fase2.png" alt="">
+                    </div>
+                    <div class="contenSelct">
+                        <input class="radio" id="selecradio3" type="radio" name="radio" value="3" onclick="desactivarInputTemp()"> <label class="label3" for="selecradio3">Fase 3</label> <img src="img/fase3.png" alt="">
+                    </div>
+                    <div class="contenSelct">
+                        <input class="radio" id="selecradio4" type="radio" name="radio" value="4" onclick="activarInputTemp()"> <label class="label4" for="selecradio4">Ajuste</label> <img src="img/configR.png" alt="">
+                    </div>
+                    <input type="text" id="dato1" placeholder="ID" class="inputIngresodato"> 
+                    <input type="text" id="dato2" placeholder="Minutos" class="inputIngresodato" disabled> 
+                    <button  onclick="guardar()" class="botonGuardado">Guardar</button>
+                </div>
+                <div id="contenedorID"></div>
+            </div>
+            <!-- -------------------------------------------------------------- -->
+            <div class="container" id="container">
                 <!--  se agregara aqui -->
+            </div>
+
         </div>
-        
+        <div class="ContenedorGeneral-final">
+            <div class="divdendonacion"><span>Echo por Overlord con cariño 🥰. Donaciones por la wallet Ronin:</span>
+                <span id="donacion">0xf483cfe05783866ba6fca458c1f4f6022f322195</span> </div>
+        </div>
     </div>
-    <div class="ContenedorGeneral-final">
-        <div class="divdendonacion"><span>Echo por Overlord con cariño 🥰. Donaciones por la wallet Ronin:</span> <span id="donacion">0xf483cfe05783866ba6fca458c1f4f6022f322195</span> </div >
-    </div>
-</div>
-<script src="script/main.js"></script>
+    <script src="script/main.js"></script>
+    <script src="script/recordTree.js"></script>
 </body>
+
 </html>
-
-

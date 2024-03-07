@@ -105,10 +105,10 @@ function guardar() {
         idLand.textContent =  id +" - ";
 
         if (opcionSeleccionada == 1) {
-            minutos = 15;
+            minutos = 15 + 120 + 435 ;
         }
         if (opcionSeleccionada == 2) {
-            minutos = 120;
+            minutos = 120 + 435;
         }
         if (opcionSeleccionada == 3) {
             minutos = 435;
@@ -141,7 +141,10 @@ function crearTemporizador(opcionSeleccionada, minutos, tempLand,botonpausar, bo
                 segundos = 59;
                 minutos--;
             }
-            tempLand.textContent = " " + minutos + ":" + (segundos < 10 ? "0" : "") + segundos;
+            var horas = Math.floor(minutos / 60);
+            var minutosRestantes = minutos % 60;
+            tempLand.textContent = " " + horas + ":" + (minutosRestantes < 10 ? "0" : "") + minutosRestantes + ":" + (segundos < 10 ? "0" : "") + segundos;
+            // tempLand.textContent = " " + minutos + ":" + (segundos < 10 ? "0" : "") + segundos;
 
             if (minutos === 0 && segundos === 0) {
                 clearInterval(intervalo);
@@ -169,7 +172,9 @@ function crearTemporizador(opcionSeleccionada, minutos, tempLand,botonpausar, bo
                     segundos = 59;
                     minutos--;
                 }
-                tempLand.textContent = " "  + minutos + ":" + (segundos < 10 ? "0" : "") + segundos;
+                var horas = Math.floor(minutos / 60);
+                var minutosRestantes = minutos % 60;
+                tempLand.textContent = " " + horas + ":" + (minutosRestantes < 10 ? "0" : "") + minutosRestantes + ":" + (segundos < 10 ? "0" : "") + segundos;
 
                 if (minutos === 0 && segundos === 0) {
                     clearInterval(intervalo);

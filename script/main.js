@@ -1,4 +1,5 @@
 
+    // import {manejoApartado} from './recordTree.js'
 
     const icono = document.getElementById('icon');
     const ocultarContenidoBtn = document.getElementById('ocultarContenidoBtn');
@@ -384,7 +385,10 @@
     createBoxes(1);
 
     ocultarContenidoBtn.addEventListener('click', function() {
-        if (contenedorOpciones.style.display === 'none') { 
+        
+        if (contenedorOpciones.style.display === 'none') {
+            
+            contenedorArboles.style.display = "none";
             contenedorOpciones.style.display = 'flex'; 
             radios.style.marginTop = '30px'; 
             options.style.display = 'none';

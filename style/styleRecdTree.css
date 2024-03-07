@@ -1,0 +1,119 @@
+#contenedorInfo{
+    margin-top: 10vh;
+    padding: 10px;
+    padding-top: 20px;
+    width: 70%;
+    height: auto;
+    /* background-color: aqua; */
+    margin: 0 auto;
+    transition: width 4s;
+
+}
+.radio, .inputIngresodato, .botonGuardado{
+    margin-top: 5px;
+}
+.inputIngresodato{
+    width: 90%;
+    height: 27px;
+    font-family:   'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* border-radius: 5px; */
+    /* border: 1px solid rgb(204, 209, 214); */
+    outline: none;
+    padding: 5px;
+    font-size: 15px;
+    
+
+}
+.botonGuardado{
+    width: 101%;
+    height: 35px;
+    font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: none;
+    color: white;
+    background-color: #1565c0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.botonGuardado:hover{
+    background-color: #28609f;
+}
+.contenSelct{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio{
+    border: 2px solid white;
+    border-radius: 0;
+    outline: none;
+    appearance: none;
+    display: none;
+}
+
+label{
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    font-family:   'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+label:hover{
+    background-color: #5f6266 ;
+}
+
+
+#selecradio1:checked ~ .label1,
+#selecradio2:checked ~ .label2,
+#selecradio3:checked ~ .label3,
+#selecradio4:checked ~ .label4{
+    background-color: #1565c0;
+}
+
+.label1, .label2, .label3, .label4{
+    width: 100%;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    
+}
+/* --------------------------- */
+#contenedorID{
+    margin-top: 1px;
+    padding: 1vh;
+    /* background-color: saqua; */
+    border: #01244c;
+    width: 96%;
+    height: auto;
+    
+}
+.contenLand{
+    margin-top: 1vh;
+    padding: 2vh;
+    background-color: #01244c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.idLand{
+    font-size: 17px;
+    /* background: rgb(14, 176, 176); */
+    font-family:   Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 1px;
+}
+.tempLand{
+    font-size: 17px;
+    color: rgba(20, 163, 63, 0.822);
+    font-family:  Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 1px;
+}
+.botonpausar, .botonEliminar{
+    margin-left: 3px;
+    cursor: pointer;
+}
+.botonEliminar{
+    background-color: #3135a8;
+}
+.botonEliminar:hover{
+    background-color: rgba(24, 6, 106, 0.5);
+}
+

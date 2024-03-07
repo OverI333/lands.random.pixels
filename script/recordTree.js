@@ -105,13 +105,13 @@ function guardar() {
         idLand.textContent =  id +" - ";
 
         if (opcionSeleccionada == 1) {
-            minutos = 15 + 120 + 435 ;
+            minutos = 435;
         }
         if (opcionSeleccionada == 2) {
-            minutos = 120 + 435;
+            minutos = 435 - 120;
         }
         if (opcionSeleccionada == 3) {
-            minutos = 435;
+            minutos = 435 - 120 - 15;
         }
         if (opcionSeleccionada == 4) {
             minutos = temp;

@@ -14,7 +14,7 @@
         }
         /* ------------------------------------ */
         .inicio{
-            height: 12%;
+            height: 10.7%;
             background: black;
             
         }
@@ -36,7 +36,7 @@
             height: 42px;
             width: 100px;
             padding: 10px 20px;
-            background: #0d47a1 ;
+            background: #000000 ;
             font-size: 110%;
             color: rgb(184, 187, 191);
             border: none;
@@ -74,7 +74,7 @@
         
         /* ---------------------------------------------------------------- */
         .caja{
-            height: 82%;
+            height: 83.5%;
             width: 100%;
             display: flex;
             position: relative;
@@ -121,7 +121,7 @@
             position: relative;
             text-align: center;
             background: black;
-            height: 6%;
+            height: 6.5%;
             color: white;
         }
         .divdendonacion {

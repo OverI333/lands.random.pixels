@@ -1,18 +1,65 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
+
     body{
-        background-color: rgba(0, 0, 0,0.99);
+        background-color: rgba(0, 0, 0,0.96);
         padding: 0px;
         margin: 0px;
     }
     
-    .contenedorOpciones {
+    #contenedorElementos{
+        width: 16%;
+        height: 96vh; 
         background-color: rgb(0, 0, 0);
         display: flex;
-        height: 90vh; 
-        width: 16%;
+        flex-direction: column;
+        /* bottom: 0%; */
+        position: absolute;
+        z-index: 2;
+        overflow: hidden;
+        left: 0;
+        bottom: 3%;
+        
+
+    }
+    .contedorApartado{
+        display: flex;
+        /* height: 20%; */
+
+        /* background-color: #a31818; */
+        border-bottom: 2px solid #1565c0;
+        
+    
+    }
+    .botonApartado{
+        height: 53px;
+        width: 100px;
+        padding: 15px 20px;
+        /* padding-top: 10px; */
+        background: #000000 ;
+        font-size: 110%;
+        color: rgb(184, 187, 191);
+        border: none;
+        cursor: pointer;
+        margin-left: 10px;
+        margin-top: 1vh;
+        /* transition: border-bottom 1s ease; */
+    }
+    /* .botonApartado:hover{ */
+        /* border: 0 1px solid #1565c0; */
+        /* border-bottom: 1px solid #1565c0; */
+        /* background-color: #1565c0 ; */
+    /* } */
+    
+    
+    .contenedorOpciones{
+       /* background-color: #0d2d52; */
+        width: 100%;
         flex-direction: column;
         transition: width 1s;
         color: rgb(184, 187, 191);
+        /* position: relative; */
     }
     /* .contenedorOpciones:hover{
         width: 13%;
@@ -40,41 +87,44 @@
         text-align: left;
         border: none;
         color: rgba(206, 213, 221,0.8);
-        font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;;
+        /* font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;; */
     }
 
-    #showOptionsBtn, #showTree{
+    #showOptionsBtn, #showTree{        
         height: 6vh; 
-        background: rgba(13, 71, 161,0.9);
+        background: rgba(0, 0, 0, 0.9);
         border:1px solid rgba(255,255,255,1);
         color: rgb(184, 187, 191);
         border: none; 
-        border-radius: 5px; 
-        padding: 5px 20px; 
+        /* border-radius: 5px;  */
+        padding: 5px 25px; 
         font-size: 14px; 
         cursor: pointer; 
         width: 100%;
         max-width: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
-        font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        /* justify-content: center; */
+        font-family:  Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        letter-spacing: 1px;
         transition: background-color 0.3s ease;
     }
     #showOptionsBtn:hover{
         background-color: #1565c0 ;
     }
+    #showTree:hover{
+        background-color: #1565c0 ;
+    }
     
 
     .opcionBoton{
-       
         display: block;
         padding: 13px 25px;
         background: rgba(0, 0, 0, 0.2);
         margin-bottom: 10px;
         border-radius: 6px;
         cursor: pointer;
-        font-size: 15px;
+        font-size: 13px;
         font-weight: 400;
         min-width:20%;
         white-space: nowrap;
@@ -84,23 +134,24 @@
         display: block;
         transition: background-color 0.3s ease;
         transition: opacity 1s ease;
+        font-family:  Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        letter-spacing: 1.4px;
     }
     .opcionBoton:hover{
-        background-color: #104e96 ;
+        background-color: #0d2d52 ;
     }
 
     .radios {
         position: relative;
-        margin-top: 30px;
+        margin-top: 20px;
         transition: margin-top 0.3s ease; 
-        
+        /* font-size: 51px; */
     }
-
     .radios {
         display: block;
-        margin-bottom: 20px;
+        margin-bottom: 0px;
         color: rgb(184, 187, 191);
-        font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        /* font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
     }
 
     .radio-item [type="radio"]{
@@ -108,17 +159,18 @@
     }
 
     .radio-item + .radio-item{
-        margin-top: 10px;
+        margin-top: 1px;
     }
     .radio-item label{
-        
+        font-family:  Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        letter-spacing: 1.2px;
         display: block;
         padding: 15px 60px;
         /* background: rgba(13, 71, 161,0.6); */
         /* border:1px solid rgba(255,255,255,0.1); */
         border-radius: 6px;
         cursor: pointer;
-        font-size: 14.2px;
+        font-size: 13px;
         font-weight: 400;
         min-width: 20%;
         white-space: nowrap;
@@ -128,19 +180,19 @@
     .radio-item label:before{
         content: "";
         position: absolute;
-        border-radius: 50%;
+        /* border-radius: 50%; */
     }
 
     .radio-item label:after{
         height: 20px;
         width: 20px;
-        border:2px solid rgba(206, 213, 221,0.8);
+        border:2px solid #4e5256;
         left: 20px;
         top: calc(50% - 12px);
         
     }
     .radio-item label:before{
-        background: rgba(206, 213, 221,0.8);
+        background: #07468e;
         height: 20px;
         width: 20px;
         left: 22px;
@@ -149,11 +201,9 @@
         transition: .4s ease-in-out 0s;
         opacity: 0;
         visibility: hidden;
-        
     }
     .radio-item [type="radio"]:checked ~ label{
         border-color: #0d47a1;
-        
     }
 
     .radio-item [type="radio"]:checked ~ label:before{
@@ -167,7 +217,7 @@
        
     }
     .radio-item:hover{
-        background-color: #1565c0 ;
+        background-color: #0d2d52 ;
     }
     /*---------------------------------------------------------------------------------*/
     .ContenedorGeneral{
@@ -178,35 +228,90 @@
    
     .ContenedorGeneral-inicio{
         /* background-color: burlywood; */
-        height: 12%;
+        height: 10.7%;
         background: black;
-        
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        z-index: 1;
     }
-    .contenedorBotonocultar{
+    .contenedorBotonLeft{
         /* background-color: aqua; */
-        width: 50%;
-        margin: auto;
-        justify-content: center; 
+        width: 15%;
+        /* margin: auto; */
+        /* justify-content: center;  */
         align-items: center; 
         text-align: center;
-        padding: 1%;
+        padding: 0%;
         display: flex; 
         position: relative;
         text-align: center;
         position: static;
-        
+        display: flex;
+        justify-content: space-between;
         
     }
+    .contenLogo{
+        width: 26%;
+        /* height: 20px; */
+        /* background-color: #07468e; */
+        display: flex;
+        font-family: "Silkscreen", sans-serif;
+        letter-spacing: -4px;
+        color: rgb(204, 207, 211);
+        position: relative;
+        animation: floatAnimation 5s infinite linear;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        font-size: 14px;
+
+    }
+    @keyframes floatAnimation {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-9%);
+        }
+        100% {
+          transform: translateY(0);
+        }
+    }
+
+    .Logo{
+        margin-top: 2%;
+        width: 19%;
+        height: 90%;
+        margin-right: 10px;
+    }
+    h1{
+        /* font-size: 150%; */
+        text-align: center;
+    }
+    .contenedorBotonRight{
+        width: 55%;
+        /* justify-content: center; */
+        align-self: center;
+        /* background-color: #07468e; */
+        display: flex;
+        flex-direction: row-reverse;
+        /* padding: 20px; */
+        
+    }
+
     .ContenedorGeneral-de-elementos{
         display: flex;
-        width: 100%;
-        height: 82%;
+        width: auto;
+        height: 83.5%;
         /* overflow: hidden; */
+        justify-content: center;
+        align-items: center;
         
     }
     .ContenedorGeneral-final {
         
-        height: 6%;
+        height: 6.5%;
         margin-bottom: 20px;
         /* padding-top: 10px; */
         display: flex; 
@@ -228,16 +333,14 @@
     }
 
     .container {
-        width: 275%;
+        /* width: 275%; */
         display: flex;
         /* background-color: #72ad77; */
         justify-content: center;
         height: 100%;
-        width : 85%;
-        margin-left: auto;
-        margin-right:auto;
+        width : 90%;
+       
         overflow: hidden;  
-        
     }
 
     .boxContainer {
@@ -293,7 +396,7 @@
         height: 42px;
         width: 100px;
         padding: 10px 20px;
-        background: #0d47a1 ;
+        background: #000000 ;
         font-size: 110%;
         color: rgb(184, 187, 191);
         border: none;
@@ -307,7 +410,30 @@
     }
     .boton:hover{
         background-color: #1565c0 ;
-       
+
+    }
+    
+    .botonRandom {
+        position: absolute;
+        right: 5%;
+        bottom: 10%;
+        z-index: 5;
+        background-color: rgba(0, 0, 0,0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* font-size: 1.8rem; */
+        cursor: pointer;
+        transition: transform .2s ease-in-out;
+        border: none;
+        outline: none;
+    }
+    .botonRandom:disabled {
+        /* background: #eea010c4; */
+        cursor: not-allowed;
+    } 
+    .datoActualizar{
+        filter: invert(95%);
     }
     /*-------------------final-----------------------*/
     #icon{
@@ -320,6 +446,21 @@
     #donacion{
         cursor: pointer;
     }
+    .rotate {
+        transform: rotate(360deg);
+        
+    }
+    .eventoRecargar{
+        width: 100.5%; 
+        height: 100.5%; 
+        stroke-dasharray: 0.25; 
+        opacity: 1; 
+        transition-duration: 2s; 
+        position: absolute;
+        background-color: #121111;
+        z-index: 1;
+    }
+   
     @media screen and (max-width: 500px){
         .ContenedorGeneral-de-elementos{
             height: 78%;
@@ -345,7 +486,7 @@
             width: 100%;
         }
         /* --------------------- */
-        .contenedorBotonocultar{
+        .contenedorBotonLeft{
             padding: 8%;
         }
         .ContenedorGeneral-final{

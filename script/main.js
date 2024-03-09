@@ -212,6 +212,16 @@
                 }, 1500);
                // Ocultar el indicador de carga cuando el iframe se ha cargado
             });
+            My_radios.forEach(function(radio) {
+                radio.addEventListener('change', function() {
+                  // Verificar si el radio está marcado
+                  if (this.checked) {
+                      eventoRecargar.style.display = "flex"; 
+                      valor = this.value;
+                      updateNumbers();
+                  }
+                });
+              });
             
         }
     };
@@ -220,6 +230,13 @@
         var texto = boxInfo.innerText;
             navigator.clipboard.writeText(texto)
     }
+    var valor = 0;
+    var My_radios = document.querySelectorAll('input[type="radio"][name="numCajas"]');
+    var randomIndex;
+    // Añadir un evento de cambio a cada radio
+    
+    
+    
           
 
     var numColmenas = [264,284,541,997,1028,1340,1664,1781,2127,2676,2921,3041,3056,3297,3985,4076,4081,4200,4409,4547,4842];
@@ -253,20 +270,6 @@
                 3749,3750,3753,3768,3774,3776,3779,3797,3834,3853,3859,3870,3873,3885,3905,3919,3933,3946,3952,3987,3988,3992,3998,4011,4021,4028,4034,4036,4048,4061,4073,4079,4083,4093,4094,4122,4139,4146,4148,4154,4159,4164,4169,4172,4176,4186,4186,4198,4219,
                 4223,4226,4245,4251,4252,4260,4295,4304,4305,4307,4309,4314,4333,4342,4348,4354,4372,4374,4383,4385,4387,4396,4401,4404,4442,4448,4455,4462,4464,4469,4478,4480,4499,4501,4509,4510,4512,4513,4527,4540,4546,4556,4556,4558,4560,4566,4581,4584,4589,
                 4595,4598,4615,4641,4653,4660,4663,4665,4675,4680,4689,4697,4705,4706,4707,4716,4718,4721,4726,4748,4752,4772,4783,4784,4809,4814,4820,4827,4829,4833,4844,4856,4874,4893,4898,4907,4924,4929,4933,4938,4941,4948,4951,4953,4962,4965,4974,4993,4994];
-    
-    var valor = 0;
-    var My_radios = document.querySelectorAll('input[type="radio"][name="numCajas"]');
-    var randomIndex;
-    // Añadir un evento de cambio a cada radio
-    My_radios.forEach(function(radio) {
-      radio.addEventListener('change', function() {
-        // Verificar si el radio está marcado
-        if (this.checked) {
-           valor = this.value;
-           updateNumbers();
-        }
-      });
-    });
     
 
     function updateNumbers() {

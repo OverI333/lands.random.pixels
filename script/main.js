@@ -78,6 +78,7 @@
             // const boxLock = document.createElement('img');
 
             boxContainer.id = i;
+            eventoRecargar.id = "even"+i;
 
             if (num>0){
             
@@ -196,7 +197,15 @@
             updateRandomBoton.addEventListener('click', () => {
                 updateRandomBoton.classList.add('rotate');
                 updateRandomBoton.setAttribute('disabled', 'disabled');
-                eventoRecargar.style.display = "flex"; 
+                
+                for (let i=0; i<num;i++){
+                    const EEventoRecargar  = document.getElementById('even'+i);
+                    if(confirmacion.includes(i.toString())) {
+                        EEventoRecargar.style.display = 'none'
+                    }else{
+                        EEventoRecargar.style.display = 'flex'
+                    }
+                }
 
                 updateNumbers();
                 setTimeout(() => {
@@ -212,16 +221,24 @@
                 }, 1500);
                // Ocultar el indicador de carga cuando el iframe se ha cargado
             });
+
             My_radios.forEach(function(radio) {
                 radio.addEventListener('change', function() {
                   // Verificar si el radio está marcado
-                  if (this.checked) {
-                      eventoRecargar.style.display = "flex"; 
-                      valor = this.value;
-                      updateNumbers();
-                  }
+                    if (this.checked) {
+                        for (let i=0; i<num;i++){
+                            const EEventoRecargar  = document.getElementById('even'+i);
+                            if(confirmacion.includes(i.toString())) {
+                                EEventoRecargar.style.display = 'none'
+                            }else{
+                                EEventoRecargar.style.display = 'flex'
+                            }
+                        }
+                        valor = this.value;
+                        updateNumbers();
+                    }
                 });
-              });
+            });
             
         }
     };
@@ -274,6 +291,7 @@
 
     function updateNumbers() {
 
+       
         var iframes = document.querySelectorAll('iframe');
         var overlays = document.querySelectorAll('.boxInfo');
         
@@ -295,6 +313,7 @@
                         iframes[i].sandbox = "allow-same-origin allow-scripts";
                     }
                     i++;
+
                     
                 }
             }

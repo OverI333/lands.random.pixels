@@ -3,12 +3,20 @@
 
     const icono = document.getElementById('icon');
     const ocultarContenidoBtn = document.getElementById('ocultarContenidoBtn');
+    
+    const contenedorElementos = document.getElementById('contenedorElementos');
     const contenedorOpciones = document.querySelector('.contenedorOpciones');
+    
+    const contenedorOpen = document.getElementById('contenedorOpen')
+    const contenedorClose = document.getElementById('contenedorClose')
+
     const showOptionsBtn = document.getElementById('showOptionsBtn');
     const options = document.getElementById('options');
     const container = document.getElementById('container');
     const radios = document.getElementById('radios'); 
     const updateRandomBoton = document.getElementById('updateRandom'); 
+    const dado = document.getElementById('dado'); 
+    
 
     var widths = window.innerWidth;
     let confirmacion = [];
@@ -26,19 +34,25 @@
         e.stopPropagation();
         if (options.style.display === 'block') {
             options.style.display = 'none';
-            radios.style.marginTop = '30px'; 
+            radios.style.marginTop = '20px'; 
+            showOptionsBtn.style.marginTop = '0px';
             icono.style.transform = 'rotate(0deg)';
         } else {
             icono.style.transform = 'rotate(-180deg)';
             options.style.display = 'block';
-            radios.style.marginTop = (options.clientHeight + 30) + 'px'; 
+            radios.style.marginTop = (options.clientHeight + 25) + 'px'; 
         }
     });
 
-    document.addEventListener('click', function() {
+    document.addEventListener('click', function(event) {
         options.style.display = 'none';
-        radios.style.marginTop = '30px';
+        radios.style.marginTop = '20px';
         icono.style.transform = 'rotate(0deg)';
+
+        
+        // if(!contenedorElementos.contains(event.target)&& (event.target).tagName !== 'BUTTON'){
+        //     contenedorElementos.style.display = 'none'
+        // }
     });
 
     options.addEventListener('click', function(event) {
@@ -48,7 +62,7 @@
             const num = parseInt(event.target.getAttribute('data-num'));
             createBoxes(num);
             options.style.display = 'none';
-            radios.style.marginTop = '30px';
+            radios.style.marginTop = '20px';
             updateNumbers();
         }
     });
@@ -60,6 +74,7 @@
             const boxContainer = document.createElement('div');
             const box = document.createElement('iframe'); 
             const boxInfo = document.createElement('div');
+            const eventoRecargar = document.createElement('l-ring-2');
             // const boxLock = document.createElement('img');
 
             boxContainer.id = i;
@@ -96,49 +111,50 @@
                     
                 });
             }
+            // const eventoRecargar = document.querySelector('.ring2');//-----------
 
             boxContainer.classList.add('boxContainer');
             box.classList.add('box');
             boxInfo.classList.add('boxInfo');
+            eventoRecargar.classList.add('eventoRecargar')
             // boxLock.classList.add('boxLock')
+
+            boxContainer.appendChild(eventoRecargar);//-----------
 
             boxContainer.appendChild(box);
             boxContainer.appendChild(boxInfo);
             // boxContainer.appendChild(boxLock);
             container.appendChild(boxContainer);
 
-    
-            
-
-
             if (num == 1){
-                boxContainer.style.marginTop = '3.5%'
-                boxContainer.style.width = '60%'
-                boxContainer.style.height = '70vh'
+                boxContainer.style.marginTop = '0.6%'
+                boxContainer.style.width = '70%'
+                boxContainer.style.height = '81vh'
                  confirmacion = [];
             }
             if (num == 2){
-                boxContainer.style.marginTop = '3.5%'
-                boxContainer.style.width = '40%'
-                boxContainer.style.height = '68vh'
+                console.log("Error 2");
+                boxContainer.style.marginTop = '0.9%'
+                boxContainer.style.width = '100%'
+                boxContainer.style.height = '80vh'
                  confirmacion = [];
             }
             if (num == 3){
                 container.style.flexDirection = '';
                 container.style.flexWrap = '';
-                boxContainer.style.marginTop = '3.5%';
-                boxContainer.style.width = '40%';
-                boxContainer.style.marginLeft = '15px';
-                boxContainer.style.height = '65vh';  
+                boxContainer.style.marginTop = '2%';
+                boxContainer.style.width = '120%';
+                boxContainer.style.marginRight = '4px';
+                boxContainer.style.height = '75vh';  
                  confirmacion = []; 
 
             }
             if (num == 4){
                 container.style.flexDirection = 'row';
                 container.style.flexWrap = 'wrap';
-                boxContainer.style.marginTop = '0.5%';
-                boxContainer.style.width = '35%';
-                boxContainer.style.height = '40vh';
+                boxContainer.style.marginTop = '0.01%';
+                boxContainer.style.width = '37%';
+                boxContainer.style.height = '41vh';
                  confirmacion = [];
  
             }
@@ -174,25 +190,37 @@
             boxInfo.addEventListener('click', function() {
                 copiarContenido(boxInfo);
             });
+            
+            // const ring2 = document.querySelector('.ring2');
 
-            updateRandomBoton.addEventListener('click', function() {
-                
-                  updateNumbers();
-                
+            updateRandomBoton.addEventListener('click', () => {
+                updateRandomBoton.classList.add('rotate');
+                updateRandomBoton.setAttribute('disabled', 'disabled');
+                eventoRecargar.style.display = "flex"; 
+
+                updateNumbers();
+                setTimeout(() => {
+                    updateRandomBoton.classList.remove('rotate');
+                    updateRandomBoton.removeAttribute('disabled');
+                }, 2500);
             });
             // boxLock.dataset.containerId = Math.random().toString(36).substring(2);
-
+            // const box = document.createElement('iframe'); 
+            box.addEventListener('load', () => {
+                setTimeout(() =>{
+                    eventoRecargar.style.display = "none"; 
+                }, 1500);
+               // Ocultar el indicador de carga cuando el iframe se ha cargado
+            });
             
         }
     };
+   
     function copiarContenido(boxInfo) {
         var texto = boxInfo.innerText;
             navigator.clipboard.writeText(texto)
-        }
+    }
           
-
-    
-
 
     var numColmenas = [264,284,541,997,1028,1340,1664,1781,2127,2676,2921,3041,3056,3297,3985,4076,4081,4200,4409,4547,4842];
     var numTextil = [107,262,351,411,438,571,783,1021,1077,1099,1423,1670,1772,1947,1960,2350,2381,2631,2840,2953,3049,3063,3136,3813,3888,4018,4841];
@@ -226,7 +254,7 @@
                 4223,4226,4245,4251,4252,4260,4295,4304,4305,4307,4309,4314,4333,4342,4348,4354,4372,4374,4383,4385,4387,4396,4401,4404,4442,4448,4455,4462,4464,4469,4478,4480,4499,4501,4509,4510,4512,4513,4527,4540,4546,4556,4556,4558,4560,4566,4581,4584,4589,
                 4595,4598,4615,4641,4653,4660,4663,4665,4675,4680,4689,4697,4705,4706,4707,4716,4718,4721,4726,4748,4752,4772,4783,4784,4809,4814,4820,4827,4829,4833,4844,4856,4874,4893,4898,4907,4924,4929,4933,4938,4941,4948,4951,4953,4962,4965,4974,4993,4994];
     
-    var valor = 1;
+    var valor = 0;
     var My_radios = document.querySelectorAll('input[type="radio"][name="numCajas"]');
     var randomIndex;
     // Añadir un evento de cambio a cada radio
@@ -250,6 +278,24 @@
         var i = 0;
         while (indices.length < iframes.length) {
 
+            if(valor == 0 ){
+                console.log('Todo: ' + valor);
+                var randomIndex = Math.floor(Math.random() * 500) +1;
+                console.log('Todo: ' + randomIndex);
+
+                if (!indices.includes(randomIndex)) {
+                    indices.push(randomIndex);
+                    var randomNumber = randomIndex;
+                    if (!confirmacion.includes(i.toString())) {
+                        iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
+                        overlays[i].textContent = randomNumber;
+                        iframes[i].sandbox = "allow-same-origin allow-scripts";
+                    }
+                    i++;
+                    
+                }
+            }
+
             if (valor == 1){
                 console.log('arboles: ' + valor);
                 var randomIndex = Math.floor(Math.random() * allowedNumbers.length);
@@ -263,6 +309,7 @@
                         overlays[i].textContent = randomNumber;
                     }
                     i++;
+                    
                 }
                 
             }
@@ -333,6 +380,7 @@
 
                 if (!indices.includes(randomIndex)) {
                     indices.push(randomIndex);
+                    var randomNumber = numCarpenter[randomIndex];
                     if (!confirmacion.includes(i.toString())) {
                         iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
                         overlays[i].textContent = randomNumber;
@@ -374,15 +422,25 @@
 
         }
     };
-    
+    createBoxes(1);
+    window.addEventListener('load', updateNumbers);
      
     document.getElementById('donacion').addEventListener('click', function() {
         var contenido = this.textContent;
         navigator.clipboard.writeText(contenido)
         
-        });
-    
-    createBoxes(1);
+    });
+
+    contenedorOpen.addEventListener('click', function() {
+        
+        contenedorElementos.style.display = 'flex';
+        console.log("sadasesa")
+    });
+
+    contenedorClose.addEventListener('click', function() {
+        
+        contenedorElementos.style.display = 'none';
+    });
 
     ocultarContenidoBtn.addEventListener('click', function() {
         

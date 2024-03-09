@@ -2,6 +2,7 @@ var contenedorArboles = document.getElementById("contenedorArboles");
 var contenedorInfo = document.getElementById("contenedorInfo");
 var contenedorID = document.getElementById("contenedorID");
 var ocultarcontenedorArboles = document.getElementById("ocultarcontenedorArboles");
+
 var showTree = document.getElementById("showTree");
 const iconoA = document.getElementById('iconA');
 
@@ -22,10 +23,10 @@ ocultarcontenedorArboles.addEventListener('click', function() {
 showTree.addEventListener('click', function() {
     if (contenedorInfo.style.display === "none") {
         contenedorInfo.style.display = "block";
-        iconoA.style.transform = 'rotate(0deg)';
+        iconoA.style.transform = 'rotate(-180deg)';
         vaciarElemento();
     } else {
-        iconoA.style.transform = 'rotate(-180deg)';
+        iconoA.style.transform = 'rotate(0deg)';
         contenedorInfo.style.display = "none";
     }
 });
@@ -102,7 +103,7 @@ function guardar() {
 
         botonpausar.src = "img/timerPause.svg";
         botonEliminar.src = "img/delete.svg";
-        idLand.textContent =  id +" - ";
+        idLand.textContent =  id;
 
         if (opcionSeleccionada == 1) {
             minutos = 435;
@@ -143,7 +144,7 @@ function crearTemporizador(opcionSeleccionada, minutos, tempLand,botonpausar, bo
             }
             var horas = Math.floor(minutos / 60);
             var minutosRestantes = minutos % 60;
-            tempLand.textContent = " " + horas + ":" + (minutosRestantes < 10 ? "0" : "") + minutosRestantes + ":" + (segundos < 10 ? "0" : "") + segundos;
+            tempLand.textContent = horas + ":" + (minutosRestantes < 10 ? "0" : "") + minutosRestantes + ":" + (segundos < 10 ? "0" : "") + segundos;
             // tempLand.textContent = " " + minutos + ":" + (segundos < 10 ? "0" : "") + segundos;
 
             if (minutos === 0 && segundos === 0) {
@@ -174,7 +175,7 @@ function crearTemporizador(opcionSeleccionada, minutos, tempLand,botonpausar, bo
                 }
                 var horas = Math.floor(minutos / 60);
                 var minutosRestantes = minutos % 60;
-                tempLand.textContent = " " + horas + ":" + (minutosRestantes < 10 ? "0" : "") + minutosRestantes + ":" + (segundos < 10 ? "0" : "") + segundos;
+                tempLand.textContent =  horas + ":" + (minutosRestantes < 10 ? "0" : "") + minutosRestantes + ":" + (segundos < 10 ? "0" : "") + segundos;
 
                 if (minutos === 0 && segundos === 0) {
                     clearInterval(intervalo);

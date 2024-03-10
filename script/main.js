@@ -56,10 +56,11 @@
     });
 
     options.addEventListener('click', function(event) {
-        
+        // var num =0;
         event.stopPropagation();
         if (event.target.tagName === 'BUTTON') {
-            const num = parseInt(event.target.getAttribute('data-num'));
+            var num =0;
+             num = parseInt(event.target.getAttribute('data-num'));
             createBoxes(num);
             options.style.display = 'none';
             radios.style.marginTop = '20px';
@@ -155,6 +156,8 @@
             }
             if (num == 2){
                 console.log("Error 2");
+                container.style.flexDirection = '';
+                container.style.flexWrap = '';
                 boxContainer.style.marginTop = '0.9%';
                 boxContainer.style.width = '100%';
                 boxContainer.style.height = '80vh';

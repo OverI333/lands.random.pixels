@@ -8,6 +8,10 @@ const iconoA = document.getElementById('iconA');
 
 var manejoApartado;
 
+// document.addEventListener('DOMContentLoaded', function() {
+//     document.getElementById("#selecradio1").checked = true;
+// });
+
 ocultarcontenedorArboles.addEventListener('click', function() {
     manejoApartado = false;
     if (contenedorArboles.style.display === "none") {
@@ -75,49 +79,51 @@ function guardar() {
         const contenLand = document.createElement('section');
         const idLand = document.createElement('span');
         const tempLand = document.createElement('span');
-        const botonpausar= document.createElement('img');
+        // const botonpausar= document.createElement('img');
         const botonEliminar = document.createElement('img');
 
         contenLand.classList.add('contenLand');
         idLand.classList.add('idLand');
         tempLand.classList.add('tempLand');
-        botonpausar.classList.add('botonpausar');
+        // botonpausar.classList.add('botonpausar');
         botonEliminar.classList.add('botonEliminar');
 
         contenLand.appendChild(idLand);
         contenLand.appendChild(tempLand);
-        contenLand.appendChild(botonpausar);
+        // contenLand.appendChild(botonpausar);
         contenLand.appendChild(botonEliminar);
 
         botonEliminar.onclick = function() {
-            contenLand.remove(); // Elimina el botón actual
+            contenLand.remove(); /// Elimina el botón actual
         };
-        botonpausar.style.width = '22px';
-        botonpausar.style.height = '22px';
-        botonpausar.style.background = "rgba(24, 6, 106, 0.8)";
+        // botonpausar.style.width = '22px';
+        // botonpausar.style.height = '22px';
+        // botonpausar.style.background = "rgba(24, 6, 106, 0.8)";
 
         botonEliminar.style.width = '22px';
         botonEliminar.style.height = '22px';
         botonEliminar.style.background = "rgba(217, 42, 42,0.8)";
         
 
-        botonpausar.src = "img/timerPause.svg";
+        // botonpausar.src = "img/timerPause.svg";
         botonEliminar.src = "img/delete.svg";
-        idLand.textContent =  id;
+        idLand.textContent = id;
 
         if (opcionSeleccionada == 1) {
             minutos = 435;
         }
         if (opcionSeleccionada == 2) {
-            minutos = 435 - 120;
+            minutos = 435 - 15;
         }
         if (opcionSeleccionada == 3) {
-            minutos = 435 - 120 - 15;
+            minutos = 300;
         }
         if (opcionSeleccionada == 4) {
             minutos = temp;
         }
-        crearTemporizador(opcionSeleccionada, minutos, tempLand, botonpausar, botonpausar);
+        
+
+        crearTemporizador(opcionSeleccionada, minutos, tempLand);
         contenedorID.appendChild(contenLand);
         idInput.value = "";
         tempInput.value = "";
@@ -129,60 +135,20 @@ function guardar() {
     }
 }
 
-function crearTemporizador(opcionSeleccionada, minutos, tempLand,botonpausar, botonpausar) {
-    var intervalo;
-    var segundos = 0;
-    
-    if (minutos > 0) {
-        // tempLand.textContent = "Minutos"+ minutos;
+// Código principal
+function crearTemporizador( opcionSeleccionada, minutos, tempLand) {
+    var worker = new Worker('worker.js');
 
-        intervalo = setInterval(function() {
-            segundos--;
-            if (segundos < 0) {
-                segundos = 59;
-                minutos--;
-            }
-            var horas = Math.floor(minutos / 60);
-            var minutosRestantes = minutos % 60;
-            tempLand.textContent = horas + ":" + (minutosRestantes < 10 ? "0" : "") + minutosRestantes + ":" + (segundos < 10 ? "0" : "") + segundos;
-            // tempLand.textContent = " " + minutos + ":" + (segundos < 10 ? "0" : "") + segundos;
+    worker.postMessage({ minutos: minutos });
 
-            if (minutos === 0 && segundos === 0) {
-                clearInterval(intervalo);
-                tempLand.textContent = "Finalizado";
-                tempLand.style.color = "rgba(217, 42, 42,0.5)";
-            }
-        }, 1000);
-    } else {
-        alert("Ingrese un valor valido.");
-    }
+    worker.onmessage = function(e) {
+        var data = e.data;
+        
+        tempLand.textContent = data.horas + ":" + (data.minutos < 10 ? "0" : "") + data.minutos + ":" + (data.segundos < 10 ? "0" : "") + data.segundos;
+            
+    };
 
-    // Agregar evento click al botón para pausar/reanudar el temporizador
-    botonpausar.addEventListener("click", function() {
-
-        if (intervalo) {
-            botonpausar.src= "img/timerPlay.svg";
-            clearInterval(intervalo); // Detener el temporizador
-            intervalo = null; // Limpiar la referencia al intervalo
-        } else {
-            botonpausar.src= "img/timerPause.svg";
-            // Reanudar el temporizador
-            intervalo = setInterval(function() {
-                segundos--;
-                if (segundos < 0) {
-                    segundos = 59;
-                    minutos--;
-                }
-                var horas = Math.floor(minutos / 60);
-                var minutosRestantes = minutos % 60;
-                tempLand.textContent =  horas + ":" + (minutosRestantes < 10 ? "0" : "") + minutosRestantes + ":" + (segundos < 10 ? "0" : "") + segundos;
-
-                if (minutos === 0 && segundos === 0) {
-                    clearInterval(intervalo);
-                    tempLand.textContent = " Finalizado";
-                    tempLand.style.color = "rgba(217, 42, 42,0.5)";
-                }
-            }, 1000);
-        }
-    });
+    // botonpausar.addEventListener("click", function() {
+    //     // Código para pausar o reanudar el temporizador
+    // });
 }

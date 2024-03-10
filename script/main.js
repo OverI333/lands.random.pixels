@@ -20,7 +20,7 @@
 
     var widths = window.innerWidth;
     let confirmacion = [];
-    
+    let valueInput;
     document.addEventListener('DOMContentLoaded', function() {
         updateNumbers(); 
     });
@@ -74,14 +74,29 @@
             const boxContainer = document.createElement('div');
             const box = document.createElement('iframe'); 
             const boxInfo = document.createElement('div');
-            const eventoRecargar = document.createElement('l-ring-2');
-            // const boxLock = document.createElement('img');
 
+            const buscarLands = document.createElement('input');
+
+            if(num < 4){
+                buscarLands.setAttribute('autocomplete', 'off');
+                buscarLands.type = 'text';
+                buscarLands.placeholder = 'ID';
+                buscarLands.id = "inptBuscar"+i; 
+                buscarLands.classList.add('buscarLands')
+                boxContainer.appendChild(buscarLands);
+            }
+            
+
+            const eventoRecargar = document.createElement('l-ring-2');
+
+            // const boxLock = document.createElement('img');
+           
             boxContainer.id = i;
             eventoRecargar.id = "even"+i;
+            // buscarLands.id = "inptBuscar"+i;
 
             if (num>0){
-            
+                
                 const boxLock = document.createElement('img');
                 boxLock.classList.add('boxLock');
                 boxContainer.appendChild(boxLock);
@@ -113,7 +128,7 @@
                 });
             }
             // const eventoRecargar = document.querySelector('.ring2');//-----------
-
+            // buscarLands.classList.add('buscarLands')
             boxContainer.classList.add('boxContainer');
             box.classList.add('box');
             boxInfo.classList.add('boxInfo');
@@ -121,23 +136,31 @@
             // boxLock.classList.add('boxLock')
 
             boxContainer.appendChild(eventoRecargar);//-----------
-
+            // boxContainer.appendChild(buscarLands);
             boxContainer.appendChild(box);
             boxContainer.appendChild(boxInfo);
             // boxContainer.appendChild(boxLock);
             container.appendChild(boxContainer);
 
             if (num == 1){
-                boxContainer.style.marginTop = '0.6%'
-                boxContainer.style.width = '70%'
-                boxContainer.style.height = '81vh'
+                boxContainer.style.marginTop = '0.6%';
+                boxContainer.style.width = '70%';
+                boxContainer.style.height = '81vh';
+
+                buscarLands.style.width = '13%';
+                buscarLands.style.left = '12px';
                  confirmacion = [];
+                 valueInput = true;
+
             }
             if (num == 2){
                 console.log("Error 2");
-                boxContainer.style.marginTop = '0.9%'
-                boxContainer.style.width = '100%'
-                boxContainer.style.height = '80vh'
+                boxContainer.style.marginTop = '0.9%';
+                boxContainer.style.width = '100%';
+                boxContainer.style.height = '80vh';
+
+                buscarLands.style.bottom = '13px';
+                valueInput = true;
                  confirmacion = [];
             }
             if (num == 3){
@@ -146,7 +169,11 @@
                 boxContainer.style.marginTop = '2%';
                 boxContainer.style.width = '120%';
                 boxContainer.style.marginRight = '4px';
-                boxContainer.style.height = '75vh';  
+                boxContainer.style.height = '75vh'; 
+                
+                buscarLands.style.left = '13px';
+                // buscarLands.style.left = 
+                valueInput = true;
                  confirmacion = []; 
 
             }
@@ -156,7 +183,10 @@
                 boxContainer.style.marginTop = '0.01%';
                 boxContainer.style.width = '37%';
                 boxContainer.style.height = '41vh';
-                 confirmacion = [];
+
+                
+                valueInput = false;
+                confirmacion = [];
  
             }
             console.log(widths)
@@ -224,7 +254,7 @@
 
             My_radios.forEach(function(radio) {
                 radio.addEventListener('change', function() {
-                  // Verificar si el radio está marcado
+                  // Verificar si el radio esta marcado
                     if (this.checked) {
                         for (let i=0; i<num;i++){
                             const EEventoRecargar  = document.getElementById('even'+i);
@@ -251,9 +281,6 @@
     var My_radios = document.querySelectorAll('input[type="radio"][name="numCajas"]');
     var randomIndex;
     // Añadir un evento de cambio a cada radio
-    
-    
-    
           
 
     var numColmenas = [264,284,541,997,1028,1340,1664,1781,2127,2676,2921,3041,3056,3297,3985,4076,4081,4200,4409,4547,4842];
@@ -289,15 +316,40 @@
                 4595,4598,4615,4641,4653,4660,4663,4665,4675,4680,4689,4697,4705,4706,4707,4716,4718,4721,4726,4748,4752,4772,4783,4784,4809,4814,4820,4827,4829,4833,4844,4856,4874,4893,4898,4907,4924,4929,4933,4938,4941,4948,4951,4953,4962,4965,4974,4993,4994];
     
 
-    function updateNumbers() {
+    function agregarEventListener(indice) {
+        if(valueInput){
+            var iframes = document.querySelectorAll('iframe');
+            var overlays = document.querySelectorAll('.boxInfo');
+            const inptBuscar  = document.getElementById('inptBuscar' + indice);
+            const EEventoRecargar  = document.getElementById('even'+indice);
+            inptBuscar.addEventListener('keydown', function(event) {
+                if (event.key === "Enter") {
+                    if(!confirmacion.includes(indice.toString()) && !isNaN(inptBuscar.value)){
+                        if( inptBuscar.value >0 ){
+                            iframes[indice].src = "https://play.pixels.xyz/pixels/share/" + inptBuscar.value;
+                            overlays[indice].textContent = inptBuscar.value;
+                            iframes[indice].sandbox = "allow-same-origin allow-scripts";
+                            EEventoRecargar.style.display = 'flex'
+                        }
+                        
+                    } 
+                }
+            });
+            inptBuscar.value = "";
+        }
+        
+    }
 
-       
+                
+    function updateNumbers() {
+        // const buscarLands  = document.getElementById('inptBuscar'+i);
         var iframes = document.querySelectorAll('iframe');
         var overlays = document.querySelectorAll('.boxInfo');
         
         var indices = [];
         var i = 0;
         while (indices.length < iframes.length) {
+            // const inptBuscar  = document.getElementById('inptBuscar'+i);
 
             if(valor == 0 ){
                 console.log('Todo: ' + valor);
@@ -307,14 +359,14 @@
                 if (!indices.includes(randomIndex)) {
                     indices.push(randomIndex);
                     var randomNumber = randomIndex;
+                   
                     if (!confirmacion.includes(i.toString())) {
-                        iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
-                        overlays[i].textContent = randomNumber;
-                        iframes[i].sandbox = "allow-same-origin allow-scripts";
+                            agregarEventListener(i); 
+                            iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
+                            overlays[i].textContent = randomNumber;
+                            iframes[i].sandbox = "allow-same-origin allow-scripts";
                     }
                     i++;
-
-                    
                 }
             }
 
@@ -327,6 +379,7 @@
                     indices.push(randomIndex);
                     var randomNumber = allowedNumbers[randomIndex];
                     if (!confirmacion.includes(i.toString())) {
+                        agregarEventListener(i); 
                         iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
                         overlays[i].textContent = randomNumber;
                     }
@@ -343,6 +396,7 @@
                     indices.push(randomIndex);
                     var randomNumber = allowedNumbers[randomIndex];
                     if (!confirmacion.includes(i.toString())) {
+                        agregarEventListener(i); 
                         iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
                         overlays[i].textContent = randomNumber;
                     }
@@ -358,6 +412,7 @@
                     indices.push(randomIndex);
                     var randomNumber = allowedNumbers[randomIndex];
                     if (!confirmacion.includes(i.toString())) {
+                        agregarEventListener(i); 
                         iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
                         overlays[i].textContent = randomNumber;
                     }
@@ -373,6 +428,7 @@
                     indices.push(randomIndex);
                     var randomNumber = numColmenas[randomIndex];
                     if (!confirmacion.includes(i.toString())) {
+                        agregarEventListener(i); 
                         iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
                         overlays[i].textContent = randomNumber;
                     }
@@ -388,6 +444,7 @@
                     indices.push(randomIndex);
                     var randomNumber = numHornos[randomIndex];
                     if (!confirmacion.includes(i.toString())) {
+                        agregarEventListener(i); 
                         iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
                         overlays[i].textContent = randomNumber;
                     }
@@ -404,6 +461,7 @@
                     indices.push(randomIndex);
                     var randomNumber = numCarpenter[randomIndex];
                     if (!confirmacion.includes(i.toString())) {
+                        agregarEventListener(i); 
                         iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
                         overlays[i].textContent = randomNumber;
                     }
@@ -419,6 +477,7 @@
                     indices.push(randomIndex);
                     var randomNumber = numMinas[randomIndex];
                     if (!confirmacion.includes(i.toString())) {
+                        agregarEventListener(i); 
                         iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
                         overlays[i].textContent = randomNumber;
                     }
@@ -434,6 +493,7 @@
                     indices.push(randomIndex);
                     var randomNumber = numTextil[randomIndex];
                     if (!confirmacion.includes(i.toString())) {
+                        agregarEventListener(i); 
                         iframes[i].src = "https://play.pixels.xyz/pixels/share/" + randomNumber;
                         overlays[i].textContent = randomNumber;
                     }

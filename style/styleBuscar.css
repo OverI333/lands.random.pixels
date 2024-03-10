@@ -1,9 +1,11 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
         body {
             
             margin: 0;
             padding: 0;
-            background-color: rgba(0, 0, 0,0.99);
+            background-color: rgba(48, 5, 189, 0.893);
         }
         
 
@@ -15,13 +17,24 @@
         /* ------------------------------------ */
         .inicio{
             height: 10.7%;
-            background: black;
+            background: rgb(0, 0, 0);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        
             
         }
-        
+        .inicioText{
+            color: rgb(184, 187, 191);
+            font-family: "Silkscreen", sans-serif;
+            letter-spacing: -4px;
+            margin-top: 0.7%;
+            font-size: 6vh;
+        }
         .conteinerBt{
-            width: 50%;
-            margin: auto;
+            width: 20%;
+            margin-left: 50%;
+            /* background-color: aqua; */
             justify-content: center; 
             align-items: center; 
             text-align: center;
@@ -30,47 +43,37 @@
             position: relative; 
             text-align: center;
             position: static;
+            z-index: 2;
         }
         .boton {
           
             height: 42px;
-            width: 100px;
+            width: 250px;
             padding: 10px 20px;
-            background: #000000 ;
+            background: rgba(0, 0,0,0) ;
             font-size: 110%;
             color: rgb(184, 187, 191);
             border: none;
             border-radius: 20px;
             cursor: pointer;
-            margin-left: 10px;
-            margin-top: 2%;
+            /* margin-left: 10px; */
+            /* margin-top: 2%; */
             transition: background-color 0.3s ease;
-
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            /* letter-spacing: -4px; */
+            font-size: 20px;
+           
+            
 
         }
-        .boton:hover{
+        /* .boton:hover{
             background-color: #1565c0 ;
 
-        }
+        } */
         .icon{
             filter: invert(80%);
         }
         
-        .inputText {
-            padding: 10px;
-            border-radius: 5px; 
-            font-size: 15px; 
-            width: 70px;
-            outline: none;
-            border: none;
-            margin-top: 2%;
-            height: 20px;
-            background-color: #c3cbd4;
-            color: rgb(32, 29, 29);
-            font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            
-        }
-
         
         /* ---------------------------------------------------------------- */
         .caja{
@@ -81,38 +84,31 @@
             align-items: center;
             justify-content: center;
         }
-        .contenedoItem{
-            display: flex;
-            margin: 20px;
-            width: 59%;
-            height: 92%;
-            background-color: #101111;
-        }
-        .Codigo{
+        
+        img{
+            /* width: 100px; */
             position: absolute;
-            margin: 20px;
-            margin-right: 10px;
-            /* background-color: rgba(42, 40, 40, 0.5); */
-            color: rgb(204, 209, 214);
-            padding: 18px;
-            font-size: 20px;
-            border-radius: 10px;
-            border-color: #000000;
-            transition: transform 0.5s ease;
-            cursor: pointer;
-            background-color: rgba(16, 17, 17, 0.7);
         }
-        .Codigo:hover {
-            transform: scale(1.1); 
-        }
-        #iframeResultado{
+        .image-4{
             width: 100%;
-            height: 100%;
-           
+            margin: 0;
+            z-index: -1;
+
         }
-        iframe{
-            border:  1px solid rgba(0, 0, 0, 0.5);
+        .image-1{
+            width: 220vh;
+            z-index: 1;
         }
+        .image-2{
+            width: 200vh;
+            z-index: 1;
+        }
+        .image-3{
+            width: 200vh;
+            z-index: 1;
+        }
+
+     
         /* ------------------------------------------------------------------- */
         .final{
             display: flex;
@@ -131,31 +127,6 @@
             color: rgb(184, 187, 191);
             position: absolute; 
             
-        }
-        @media screen and (max-width: 500px) {
-            .contenedoItem{
-                display: flex;
-                margin: 20px;
-                width: 90%;
-                height: 50%;
-            }
-            .conteinerBt{
-                padding: 8%;
-                
-            }
-            .caja{
-                height: 78%;
-            }
-            .final{
-                display: flex;
-                align-items: center; 
-                justify-content: center;
-                position: relative;
-                text-align: center;
-                background: rgb(0, 0, 0);
-                height: 10%;
-                color: white;
-            }
         }
 
    

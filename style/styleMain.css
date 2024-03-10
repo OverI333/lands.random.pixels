@@ -292,12 +292,16 @@
     .contenedorBotonRight{
         width: 55%;
         /* justify-content: center; */
-        align-self: center;
         /* background-color: #07468e; */
         display: flex;
         flex-direction: row-reverse;
+        align-self: center;
+        /* padding: 10px; */
         /* padding: 20px; */
-        
+        cursor: "";
+    }
+    .bthome{
+        margin-bottom: 1%;
     }
 
     .ContenedorGeneral-de-elementos{
@@ -366,7 +370,7 @@
         transition: transform 1s ease;;
     }
     .boxInfo:hover {
-        transform: scale(1.09); 
+        transform: scale(1.07); 
     }
     .box{
         border:  1px solid rgba(0, 0, 0, 1);
@@ -387,6 +391,47 @@
         cursor: pointer;
         
     }
+    .buscarLands{
+        
+        outline: none;
+        font-family:  Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        letter-spacing: 2px;
+        font-size: 19px;
+        position: absolute;
+        bottom: 14px;
+        left: 13px;
+        width: 18%;
+        height: 5%;
+        background-color:rgba(16, 17, 17, 1);
+        border: 10px solid rgba(255, 251, 251, 0.12);
+        border-right: 38px solid rgba(255, 251, 251, 0.12);
+        border-left: 38px solid rgba(255, 251, 251, 0.12);
+        color: rgb(204, 209, 214);
+        border-radius: 10px;
+        text-align: center;
+        /* border-right: 400px solid white; */
+    }
+
+    /* .buscarLands{
+        
+        outline: none;
+        font-family:  Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        letter-spacing: 2px;
+        font-size: 19px;
+        position: absolute;
+        bottom: 15.1px;
+        left: 12px;
+        width: 18%;
+        height: 7.5%;
+        background-color:rgba(16, 17, 17, 1);
+        border: 10px solid rgba(255, 251, 251, 0.18);
+     
+        color: rgb(204, 209, 214);
+        border-radius: 10px;
+        text-align: center;
+       
+    } */
+
     /* img{    
         filter: invert(70%);
     } */

@@ -92,7 +92,8 @@ label{
 #selecradio3:checked ~ .label3,
 #selecradio4:checked ~ .label4{
     /* background-color: #1a4f8b; */
-    border-bottom: 2px solid #1a4f8b;
+    border-bottom: 3px solid #1a4f8b;
+    filter: invert(0%);
     
 } 
 
@@ -101,8 +102,13 @@ label{
     text-align: center;
     height: 40px;
     line-height: 40px;
+    filter: invert(70%);
     
-} 
+}
+input[type="radio"]:first-child:checked + .label1 {
+    /* border-bottom: 3px solid #1a4f8b; */
+    filter: invert(70%);
+}
 /* --------------------------- */
 #contenedorID{
     margin-top: 1px;

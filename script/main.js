@@ -144,6 +144,8 @@
             container.appendChild(boxContainer);
 
             if (num == 1){
+                container.style.flexDirection = '';
+                container.style.flexWrap = '';
                 boxContainer.style.marginTop = '0.6%';
                 boxContainer.style.width = '70%';
                 boxContainer.style.height = '81vh';

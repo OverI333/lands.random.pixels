@@ -22,7 +22,7 @@
                 <h1>Single Traker</h1>
             </div>
             <div class="contenedorBotonRight">
-                <button class="boton" onclick="irAPaginaBuscar()"><img src="img/buscar.svg" class="icon"></button>
+                <button class="boton bthome"  onclick="irAPaginaBuscar()"><img src="img/home.svg" class="icon"></button>
             </div>
         </div>
         <div class="ContenedorGeneral-de-elementos">
@@ -37,7 +37,7 @@
                 
                 <div class="contenedorOpciones">
                     <div class="opcionnes">
-                        <button id="showOptionsBtn"> <span class="lands">Lands</span> <img src="img/down.svg"
+                        <button id="showOptionsBtn"> <span class="lands">Mostrar Lands</span> <img src="img/down.svg"
                                 id="icon"></button>
                         <div class="options" id="options">
                             <button data-num="1" class="opcionBoton">Land 1</button>
@@ -88,12 +88,12 @@
                 </div>
                 <!-- ------------------------------------------------------------- -->
                 <div id="contenedorArboles" class="contenedorOpciones" style="display: none;">
-                    <button id="showTree"> <span class="lands">Nuevo</span> <img src="img/down.svg"
+                    <button id="showTree"> <span class="lands">Crea temporizador</span> <img src="img/down.svg"
                         id="iconA"></button>
                     <div id="contenedorInfo" style="display: none;">
                         <div class="conSelecion">
                             <div class="contenSelct">
-                                <input class="radio" id="selecradio1" type="radio" name="radio" value="1" onclick="desactivarInputTemp()"> <label for="selecradio1" class="label1"><img src="img/fase1.png" alt=""></label>
+                                <input class="radio" id="selecradio1" type="radio" name="radio" value="1" checked> <label for="selecradio1" class="label1"><img src="img/fase1.png" alt=""></label>
                             </div>
                             <div class="contenSelct">
                                 <input class="radio" id="selecradio2" type="radio" name="radio" value="2" onclick="desactivarInputTemp()"> <label for="selecradio2" class="label2"><img src="img/fase2.png" alt=""></label>
@@ -133,6 +133,9 @@
     <script src="script/recordTree.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ring2.js"></script>
     <!-- <script src="script/fucions.js"></script> -->
+
+    
 </body>
+
 
 </html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temporizador con Web Worker</title>
+</head>
+<body>
+<h1>Temporizador con Web Worker</h1>
+<p id="timer">0:00</p>
+<button id="botonIniciar">Iniciar</button>
+<button id="botonPausarReanudar">Pausar/Reanudar</button>
+
+<script>
+// Crear un nuevo Web Worker desde el archivo worker.js
+const worker = new Worker('worker.js');
+
+// Escuchar mensajes del Web Worker
+worker.onmessage = function(event) {
+    if (event.data === 'finalizado') {
+        document.getElementById('timer').textContent = 'Finalizado';
+        document.getElementById('timer').style.color = "rgba(217, 42, 42,0.5)";
+    } else {
+        const minutos = event.data.minutos;
+        const segundos = event.data.segundos;
+        document.getElementById('timer').textContent = minutos + ':' + (segundos < 10 ? '0' : '') + segundos;
+    }
+};
+
+// Agregar evento click al botón para iniciar el temporizador
+document.getElementById('botonIniciar').addEventListener('click', function() {
+    const minutos = parseInt(prompt('Ingrese la cantidad de minutos'));
+    if (!isNaN(minutos)) {
+        worker.postMessage({ comando: 'iniciar', minutos: minutos });
+    }
+});
+
+// Agregar evento click al botón para pausar/reanudar el temporizador
+document.getElementById('botonPausarReanudar').addEventListener('click', function() {
+    worker.postMessage({ comando: 'pausarReanudar' });
+});
+</script>
+</body>
+</html>

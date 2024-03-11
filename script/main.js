@@ -209,12 +209,15 @@
                     boxContainer.style.height = '50vh'
                 }
                 if (num == 2){
-                    container.style.marginTop = '-13vh' 
+                    container.style.marginTop = '-15vh' 
                     boxContainer.style.width = '90%'
                     boxContainer.style.height = '42vh'
                 }
-                if(num == 3 || num == 4){
-                    container.style.marginTop = '0vh' 
+                if (num == 3){
+                    container.style.marginTop = '5vh' 
+                }
+                if(num == 4){
+                    container.style.marginTop = '10vh' 
                 }
                 
             }

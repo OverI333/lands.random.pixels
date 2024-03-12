@@ -132,6 +132,7 @@
         }
         /* ------------------------------------------------------ */
         .btTraker{
+            font-family: "Silkscreen",sans-serif;
             position: absolute;
             top: 90%;
             left: 15%;
@@ -144,9 +145,9 @@
             color:rgb(184, 187, 191);
             cursor: pointer;
             box-shadow: 2px 7px 10px rgba(0, 0, 0, 0.5);
-            font-size: 3.5vh;
-            letter-spacing: 1.5px;
-            font-family:  Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 18.5px;
+            /* letter-spacing: 1.5px; */
+            /* font-family:  Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
             animation: floatAnimation 3s infinite linear;
             border-radius: 5px;
         }
@@ -305,6 +306,7 @@
                 top: 130vh;
                 left: 20%;
                 width: 60%;
+                font-size: 16px;
             }
             .inicioText{
                 height: 40%;

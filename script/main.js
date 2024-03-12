@@ -75,10 +75,9 @@
             const boxContainer = document.createElement('div');
             const box = document.createElement('iframe'); 
             const boxInfo = document.createElement('div');
-
             const buscarLands = document.createElement('input');
-
             if(num < 4){
+                
                 buscarLands.setAttribute('autocomplete', 'off');
                 buscarLands.type = 'text';
                 buscarLands.placeholder = 'ID';
@@ -195,13 +194,16 @@
  
             }
             console.log(widths)
-            if (widths <= 700) {
+            if (widths <= 500) {
                 container.style.flexDirection = '';
                 container.style.flexWrap = '';
                     // Limpiar cualquier flotante previo
                 container.style.flexDirection = 'column';
                 boxContainer.style.width = '82%';
-                boxContainer.style.height = '30%';
+                boxContainer.style.height = '30%';               
+              
+                buscarLands.style.width = '25%'
+                buscarLands.style.height = '9%'
                 if (num == 1){
                     boxContainer.style.marginTop = '-40vh'
                     boxContainer.style.width = '93%'

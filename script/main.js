@@ -25,8 +25,8 @@
         updateNumbers(); 
     });
 
-    function irAPaginaBuscar() {
-        window.location.href = "buscar.html";
+    function irAHome() {
+        window.location.href = "index.html";
     }
     
     showOptionsBtn.addEventListener('click', function(e) {

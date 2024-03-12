@@ -16,7 +16,7 @@
     
 // }
 function irAPaginaPrincipal() {
-    window.location.href = "index.html";
+    window.location.href = "main.html";
 }
 
 // function copiarContenido(overlayId) {

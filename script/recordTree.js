@@ -9,7 +9,10 @@ const iconoA = document.getElementById('iconA');
 var manejoApartado;
 
 // document.addEventListener('DOMContentLoaded', function() {
-//     document.getElementById("#selecradio1").checked = true;
+//     var selecradio1 = document.getElementsByName("#selecradio1");
+//         selecradio1.forEach(function(radioButton) {
+//             radioButton.checked = true;
+//         });
 // });
 
 ocultarcontenedorArboles.addEventListener('click', function() {
@@ -45,9 +48,10 @@ function activarInputTemp() {
 function desactivarInputTemp() {
     // Obtener el input por su ID
     var input = document.getElementById("dato2");
-
+    // var idInput = document.getElementById("dato1");
     // Desactivar el input
     input.disabled = true;
+    // idInput.textContent = "";
 }
 
 function vaciarElemento(){
@@ -65,16 +69,26 @@ function vaciarElemento(){
 // var temporizadorActivo = false;
 // var bolian = true;
 function guardar() {
+   
     var idInput = document.getElementById("dato1");
     var tempInput = document.getElementById("dato2");
     var id = idInput.value;
     var temp = tempInput.value;
+    var tempBol = false ;
 
     var minutos = 0;
     var radioSeleccionado = document.querySelector('input[name="radio"]:checked');
     var opcionSeleccionada = radioSeleccionado ? radioSeleccionado.value : null;
 
-    if (id && opcionSeleccionada) {
+    
+    if( opcionSeleccionada ==4 && temp >0 ){
+        tempBol = false;
+    } else if(opcionSeleccionada == 4){
+        tempBol = true;
+    }
+
+
+    if (id && opcionSeleccionada && !tempBol) {
         console.log("Ingreso aqui")
         const contenLand = document.createElement('section');
         const idLand = document.createElement('span');
@@ -132,7 +146,15 @@ function guardar() {
             radioButton.checked = false;
         });
 
+    }else{
+        var radioButtons = document.getElementsByName("radio");
+        radioButtons.forEach(function(radioButton) {
+            radioButton.checked = false;
+            tempInput.value = "";
+            // idInput.value = "";
+        });
     }
+    
 }
 
 // Código principal
@@ -144,8 +166,12 @@ function crearTemporizador( opcionSeleccionada, minutos, tempLand) {
     worker.onmessage = function(e) {
         var data = e.data;
         
-        tempLand.textContent = data.horas + ":" + (data.minutos < 10 ? "0" : "") + data.minutos + ":" + (data.segundos < 10 ? "0" : "") + data.segundos;
-            
+            tempLand.textContent = data.horas + ":" + (data.minutos < 10 ? "0" : "") + data.minutos + ":" + (data.segundos < 10 ? "0" : "") + data.segundos;
+            if(data.finalizado){
+                tempLand.style.color = "rgb(183, 42, 42)";
+                tempLand.textContent = "Finalizado";
+            }
+        
     };
 
     // botonpausar.addEventListener("click", function() {
